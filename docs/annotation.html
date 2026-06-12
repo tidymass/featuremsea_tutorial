@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>2 Annotation and Filtering | featureMSEA Tutorial</title>
 <meta name="author" content="TidyMass Team">
-<meta name="description" content="Step 1 annotates metabolic features against the MS1 database by matching m/z values within a user-specified mass accuracy window. Co-eluting features are further grouped into Metabolic Feature...">
+<meta name="description" content="In Step 1, metabolic features are annotated against the MS1 database via accurate mass matching within a user-specified tolerance window. Co-eluting features sharing similar retention times are...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="2 Annotation and Filtering | featureMSEA Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://tidymass.github.io/featuremsea_tutorial/annotation.html">
 <meta property="og:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
-<meta property="og:description" content="Step 1 annotates metabolic features against the MS1 database by matching m/z values within a user-specified mass accuracy window. Co-eluting features are further grouped into Metabolic Feature...">
+<meta property="og:description" content="In Step 1, metabolic features are annotated against the MS1 database via accurate mass matching within a user-specified tolerance window. Co-eluting features sharing similar retention times are...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2 Annotation and Filtering | featureMSEA Tutorial">
-<meta name="twitter:description" content="Step 1 annotates metabolic features against the MS1 database by matching m/z values within a user-specified mass accuracy window. Co-eluting features are further grouped into Metabolic Feature...">
+<meta name="twitter:description" content="In Step 1, metabolic features are annotated against the MS1 database via accurate mass matching within a user-specified tolerance window. Co-eluting features sharing similar retention times are...">
 <meta name="twitter:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -50,12 +50,12 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="index.html">featureMSEA</a></li>
 <li><a class="" href="inputs.html"><span class="header-section-number">1</span> Summary of Inputs</a></li>
 <li><a class="active" href="annotation.html"><span class="header-section-number">2</span> Annotation and Filtering</a></li>
 <li><a class="" href="fmsea-analysis.html"><span class="header-section-number">3</span> featureMSEA Analysis</a></li>
-<li><a class="" href="visualization.html"><span class="header-section-number">4</span> Data Visualization</a></li>
-<li><a class="" href="llm-interpretation.html"><span class="header-section-number">5</span> LLM-assisted Interpretation</a></li>
+<li><a class="" href="llm-interpretation.html"><span class="header-section-number">4</span> LLM-assisted Interpretation</a></li>
+<li><a class="" href="results.html"><span class="header-section-number">5</span> Analysis Results</a></li>
 </ul>
 
         <div class="book-extra">
@@ -67,10 +67,10 @@
 <h1>
 <span class="header-section-number">2</span> Annotation and Filtering<a class="anchor" aria-label="anchor" href="#annotation"><i class="fas fa-link"></i></a>
 </h1>
-<p>Step 1 annotates metabolic features against the MS1 database by matching <em>m/z</em> values within a user-specified mass accuracy window. Co-eluting features are further grouped into <strong>Metabolic Feature Clusters (MFCs)</strong> based on retention time, which improves annotation confidence and reduces redundancy.</p>
+<p>In Step 1, metabolic features are annotated against the MS1 database via accurate mass matching within a user-specified tolerance window. Co-eluting features sharing similar retention times are further grouped into <strong>Metabolic Feature Clusters (MFCs)</strong>, a grouping strategy that improves annotation confidence and reduces redundancy in the resulting annotation table.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-5"></span>
-<img src="figures/fmsea_step1.png" alt="Step 1: annotation and filtering parameters" width="90%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="figures/step1.png" alt="Step 1: annotation and filtering parameters" width="90%"><p class="caption">
 Figure 2.1: Step 1: annotation and filtering parameters
 </p>
 </div>
@@ -115,7 +115,14 @@ Figure 2.1: Step 1: annotation and filtering parameters
 <blockquote>
 <p><strong>Tip:</strong> Use <code>"rp"</code> (reverse phase) for most lipidomics and general metabolomics experiments. Switch to <code>"hilic"</code> for polar metabolite profiling.</p>
 </blockquote>
-<p>Click <strong>Run Step 1</strong>. Annotation may take a few minutes depending on feature count. When complete, a summary of annotated features appears below the parameters panel.</p>
+<p>Click <strong>Run Step 1</strong>. Annotation may take a few minutes depending on feature count.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="figures/step1_running.png" alt="Step 1 running" width="90%"><p class="caption">
+Figure 2.2: Step 1 running
+</p>
+</div>
+<p>When complete, a summary of annotated features appears below the parameters panel.</p>
 
 </div>
 </div>

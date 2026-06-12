@@ -1,43 +1,53 @@
 # Summary of Inputs {#inputs}
 
-featureMSEA runs through the **TidyMass Shiny** web application. Visit [tidymassshiny.jaspershenlab.com](https://tidymassshiny.jaspershenlab.com){target="_blank"} or run it locally, then navigate to **fMSEA Analysis** under **Tidymass Shiny Toolkits**.
+featureMSEA requires three inputs: a **feature table** from your LC-MS experiment, an **MS1 metabolite database** for annotation, and a **metabolite set database** for enrichment testing.
 
-```{r echo=FALSE, fig.cap="Launching the fMSEA Analysis module"}
-knitr::include_graphics("figures/fmsea_start.png")
+## Feature Table {#feature-table}
+
+The feature table is the primary input and must be provided as an `.rda` file containing a data frame. Each row represents one metabolic feature detected in your LC-MS experiment. The following columns are required:
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `variable_id` | character | Unique identifier for each metabolic feature |
+| `mz` | numeric | Measured mass-to-charge ratio (*m/z*) |
+| `rt` | numeric | Retention time in **seconds** |
+| `condition` | numeric | Phenotype-associated ranking statistic — use the absolute value of an effect-size measure such as signal-to-noise ratio (\|SNR\|), fold-change (\|log₂FC\|), or correlation coefficient (\|r\|) |
+| `polarity` | character | Ion mode: `"positive"` or `"negative"` |
+| `mean_intensity` | numeric | Average feature intensity across all samples |
+
+> **Note on `condition`:** featureMSEA ranks features from most to least biologically relevant before running enrichment. A larger `condition` value means a feature is ranked higher. Use absolute values — the direction of change is captured by the enrichment score sign (positive NES = pathway enriched among up-regulated features; negative NES = enriched among down-regulated features).
+
+## Reference Databases {#databases}
+
+Two reference databases are required and must also be provided as `.rda` files.
+
+**MS1 metabolite database** — used for accurate-mass-based feature annotation (*m/z* matching). Supported options:
+
+- KEGG
+- HMDB
+
+**Metabolite set database** — defines the sets of metabolites tested for enrichment. Supported options:
+
+| Database | Description |
+|----------|-------------|
+| KEGG | Metabolic pathway maps |
+| PathBank | Comprehensive human pathway collection |
+| WikiPathways | Community-curated pathways |
+| Reactome | Detailed reaction-level pathways |
+| **iMetPD** *(recommended)* | Integrated resource consolidating all five sources |
+
+> **Tip:** iMetPD provides the broadest pathway coverage and is the recommended choice for most analyses.
+
+## Uploading Data {#uploading}
+
+Use the three upload buttons in the **Data Upload** panel to load your feature table, MS1 database, and metabolite set database.
+
+```{r echo=FALSE, fig.cap="Data upload panel: feature table, MS1 database, and metabolite set database"}
+knitr::include_graphics("figures/data_upload.png")
 ```
 
-## Required files {#required-files}
+If you have already completed a previous featureMSEA run, you can upload the saved `fmsea_result.rda` directly. This skips annotation and enrichment entirely and loads the prior results straight into the visualization panel.
 
-Three `.rda` files are required. These can be prepared in R or downloaded from the demo package (see below).
-
-```{r echo=FALSE, fig.cap="Overview of required input files"}
-knitr::include_graphics("figures/fmsea_inputs.png")
-```
-
-| File | Description |
-|------|-------------|
-| **Feature Table** | Processed feature table from your metabolomics experiment |
-| **MS1 Database** | Metabolite reference database for annotation (KEGG or HMDB) |
-| **Pathway Database** | Pathway membership database (KEGG, HMDB, iMETpD, Reactome, or WikiPathways) |
-
-## Demo data {#demo-data}
-
-A ready-to-use demo package is available on [Google Drive](https://drive.google.com/file/d/1iuN0SvBybYlKzbHHSrqSRvKG-V18KG5Y/view?usp=drive_link){target="_blank"}. Download and unzip; the package contains:
-
-- `feature_table.rda` — processed feature table
-- `ms1_database.rda` — KEGG MS1 annotation database
-- `pathway_database.rda` — KEGG pathway database
-
-## Uploading files {#uploading}
-
-Click the three buttons in the upload panel to select each `.rda` file from your local computer.
-
-```{r echo=FALSE, fig.cap="Selecting the three input files"}
-knitr::include_graphics("figures/files_upload.png")
-```
-
-> **Shortcut:** If you already have a saved `fmsea_result.rda` from a previous run, upload it via **Existing Results** to skip annotation and enrichment and go directly to visualization.
-
-```{r echo=FALSE, fig.cap="Uploading an existing results object"}
-knitr::include_graphics("figures/results_upload.png")
+```{r echo=FALSE, fig.cap="Uploading a previously saved result to resume from the visualization step"}
+knitr::include_graphics("figures/result_upload.png")
 ```

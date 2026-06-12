@@ -1,9 +1,9 @@
 # featureMSEA Analysis {#fmsea-analysis}
 
-Step 2 applies a GSEA-style enrichment algorithm to the annotated features from Step 1. Features are ranked by their signal statistic (fold-change × significance), and each pathway is scored by how non-randomly its member features are distributed within the ranked list.
+Step 2 performs feature rank-based metabolite set enrichment scoring. Features are ranked according to a user-provided phenotype-associated statistic, and for each metabolite set, a running enrichment score is computed across the ranked feature list to evaluate whether features annotated to metabolites in that set are non-randomly concentrated toward the top of the ranking.
 
 ```{r echo=FALSE, fig.cap="Step 2: featureMSEA enrichment parameters"}
-knitr::include_graphics("figures/fmsea_step2.png")
+knitr::include_graphics("figures/step2.png")
 ```
 
 ## Parameters {#analysis-params}
@@ -17,6 +17,6 @@ knitr::include_graphics("figures/fmsea_step2.png")
 | `Max Iterations` | Algorithm iterations | `1` |
 | `FDR Thr` | FDR significance threshold | `0.05` |
 
-> **Note:** Increasing `Permutations` improves p-value precision but increases runtime proportionally. `1000` permutations gives a good balance for exploratory analysis; use `5000`+ for publication-quality results.
+> **Note:** Increasing `Permutations` improves p-value precision but increases runtime proportionally. `1000` permutations gives a good balance for exploratory analysis; use `10,000`+ for publication-quality results.
 
 Click **Run Step 2**. Run time scales with the number of permutations and the size of the pathway database. A progress bar is shown during computation.

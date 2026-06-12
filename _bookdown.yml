@@ -6,8 +6,8 @@ rmd_files:
   - 01-inputs.Rmd
   - 02-annotation.Rmd
   - 03-analysis.Rmd
-  - 04-visualization.Rmd
-  - 05-llm.Rmd
+  - 04-llm.Rmd
+  - 05-visualization.Rmd
 language:
   ui:
     chapter_name: ""

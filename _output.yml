@@ -1,6 +1,6 @@
 bookdown::bs4_book:
   theme:
-    primary: "#6B8C6E"
+    primary: "#059669"
     base_font:
       google: "Inter"
     heading_font:

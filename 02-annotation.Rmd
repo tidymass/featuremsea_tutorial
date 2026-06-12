@@ -1,9 +1,9 @@
 # Annotation and Filtering {#annotation}
 
-Step 1 annotates metabolic features against the MS1 database by matching *m/z* values within a user-specified mass accuracy window. Co-eluting features are further grouped into **Metabolic Feature Clusters (MFCs)** based on retention time, which improves annotation confidence and reduces redundancy.
+In Step 1, metabolic features are annotated against the MS1 database via accurate mass matching within a user-specified tolerance window. Co-eluting features sharing similar retention times are further grouped into **Metabolic Feature Clusters (MFCs)**, a grouping strategy that improves annotation confidence and reduces redundancy in the resulting annotation table.
 
 ```{r echo=FALSE, fig.cap="Step 1: annotation and filtering parameters"}
-knitr::include_graphics("figures/fmsea_step1.png")
+knitr::include_graphics("figures/step1.png")
 ```
 
 ## Parameters {#annotation-params}
@@ -18,4 +18,10 @@ knitr::include_graphics("figures/fmsea_step1.png")
 
 > **Tip:** Use `"rp"` (reverse phase) for most lipidomics and general metabolomics experiments. Switch to `"hilic"` for polar metabolite profiling.
 
-Click **Run Step 1**. Annotation may take a few minutes depending on feature count. When complete, a summary of annotated features appears below the parameters panel.
+Click **Run Step 1**. Annotation may take a few minutes depending on feature count.
+
+```{r echo=FALSE, fig.cap="Step 1 running"}
+knitr::include_graphics("figures/step1_running.png")
+```
+
+When complete, a summary of annotated features appears below the parameters panel.

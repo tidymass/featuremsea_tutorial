@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>3 featureMSEA Analysis | featureMSEA Tutorial</title>
 <meta name="author" content="TidyMass Team">
-<meta name="description" content="Step 2 applies a GSEA-style enrichment algorithm to the annotated features from Step 1. Features are ranked by their signal statistic (fold-change × significance), and each pathway is scored by...">
+<meta name="description" content="Step 2 performs feature rank-based metabolite set enrichment scoring. Features are ranked according to a user-provided phenotype-associated statistic, and for each metabolite set, a running...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="3 featureMSEA Analysis | featureMSEA Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://tidymass.github.io/featuremsea_tutorial/fmsea-analysis.html">
 <meta property="og:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
-<meta property="og:description" content="Step 2 applies a GSEA-style enrichment algorithm to the annotated features from Step 1. Features are ranked by their signal statistic (fold-change × significance), and each pathway is scored by...">
+<meta property="og:description" content="Step 2 performs feature rank-based metabolite set enrichment scoring. Features are ranked according to a user-provided phenotype-associated statistic, and for each metabolite set, a running...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="3 featureMSEA Analysis | featureMSEA Tutorial">
-<meta name="twitter:description" content="Step 2 applies a GSEA-style enrichment algorithm to the annotated features from Step 1. Features are ranked by their signal statistic (fold-change × significance), and each pathway is scored by...">
+<meta name="twitter:description" content="Step 2 performs feature rank-based metabolite set enrichment scoring. Features are ranked according to a user-provided phenotype-associated statistic, and for each metabolite set, a running...">
 <meta name="twitter:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -50,12 +50,12 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="index.html">featureMSEA</a></li>
 <li><a class="" href="inputs.html"><span class="header-section-number">1</span> Summary of Inputs</a></li>
 <li><a class="" href="annotation.html"><span class="header-section-number">2</span> Annotation and Filtering</a></li>
 <li><a class="active" href="fmsea-analysis.html"><span class="header-section-number">3</span> featureMSEA Analysis</a></li>
-<li><a class="" href="visualization.html"><span class="header-section-number">4</span> Data Visualization</a></li>
-<li><a class="" href="llm-interpretation.html"><span class="header-section-number">5</span> LLM-assisted Interpretation</a></li>
+<li><a class="" href="llm-interpretation.html"><span class="header-section-number">4</span> LLM-assisted Interpretation</a></li>
+<li><a class="" href="results.html"><span class="header-section-number">5</span> Analysis Results</a></li>
 </ul>
 
         <div class="book-extra">
@@ -67,10 +67,10 @@
 <h1>
 <span class="header-section-number">3</span> featureMSEA Analysis<a class="anchor" aria-label="anchor" href="#fmsea-analysis"><i class="fas fa-link"></i></a>
 </h1>
-<p>Step 2 applies a GSEA-style enrichment algorithm to the annotated features from Step 1. Features are ranked by their signal statistic (fold-change × significance), and each pathway is scored by how non-randomly its member features are distributed within the ranked list.</p>
+<p>Step 2 performs feature rank-based metabolite set enrichment scoring. Features are ranked according to a user-provided phenotype-associated statistic, and for each metabolite set, a running enrichment score is computed across the ranked feature list to evaluate whether features annotated to metabolites in that set are non-randomly concentrated toward the top of the ranking.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-6"></span>
-<img src="figures/fmsea_step2.png" alt="Step 2: featureMSEA enrichment parameters" width="90%"><p class="caption">
+<span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="figures/step2.png" alt="Step 2: featureMSEA enrichment parameters" width="90%"><p class="caption">
 Figure 3.1: Step 2: featureMSEA enrichment parameters
 </p>
 </div>
@@ -123,7 +123,7 @@ Figure 3.1: Step 2: featureMSEA enrichment parameters
 </tbody>
 </table></div>
 <blockquote>
-<p><strong>Note:</strong> Increasing <code>Permutations</code> improves p-value precision but increases runtime proportionally. <code>1000</code> permutations gives a good balance for exploratory analysis; use <code>5000</code>+ for publication-quality results.</p>
+<p><strong>Note:</strong> Increasing <code>Permutations</code> improves p-value precision but increases runtime proportionally. <code>1000</code> permutations gives a good balance for exploratory analysis; use <code>10,000</code>+ for publication-quality results.</p>
 </blockquote>
 <p>Click <strong>Run Step 2</strong>. Run time scales with the number of permutations and the size of the pathway database. A progress bar is shown during computation.</p>
 
@@ -132,7 +132,7 @@ Figure 3.1: Step 2: featureMSEA enrichment parameters
 
   <div class="chapter-nav">
 <div class="prev"><a href="annotation.html"><span class="header-section-number">2</span> Annotation and Filtering</a></div>
-<div class="next"><a href="visualization.html"><span class="header-section-number">4</span> Data Visualization</a></div>
+<div class="next"><a href="llm-interpretation.html"><span class="header-section-number">4</span> LLM-assisted Interpretation</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">

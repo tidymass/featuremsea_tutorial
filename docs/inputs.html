@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>1 Summary of Inputs | featureMSEA Tutorial</title>
 <meta name="author" content="TidyMass Team">
-<meta name="description" content="featureMSEA runs through the TidyMass Shiny web application. Visit tidymassshiny.jaspershenlab.com or run it locally, then navigate to fMSEA Analysis under Tidymass Shiny Toolkits.  Figure 1.1:...">
+<meta name="description" content="featureMSEA requires three inputs: a feature table from your LC-MS experiment, an MS1 metabolite database for annotation, and a metabolite set database for enrichment testing.  1.1 Feature Table...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
 <meta property="og:title" content="1 Summary of Inputs | featureMSEA Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://tidymass.github.io/featuremsea_tutorial/inputs.html">
 <meta property="og:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
-<meta property="og:description" content="featureMSEA runs through the TidyMass Shiny web application. Visit tidymassshiny.jaspershenlab.com or run it locally, then navigate to fMSEA Analysis under Tidymass Shiny Toolkits.  Figure 1.1:...">
+<meta property="og:description" content="featureMSEA requires three inputs: a feature table from your LC-MS experiment, an MS1 metabolite database for annotation, and a metabolite set database for enrichment testing.  1.1 Feature Table...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="1 Summary of Inputs | featureMSEA Tutorial">
-<meta name="twitter:description" content="featureMSEA runs through the TidyMass Shiny web application. Visit tidymassshiny.jaspershenlab.com or run it locally, then navigate to fMSEA Analysis under Tidymass Shiny Toolkits.  Figure 1.1:...">
+<meta name="twitter:description" content="featureMSEA requires three inputs: a feature table from your LC-MS experiment, an MS1 metabolite database for annotation, and a metabolite set database for enrichment testing.  1.1 Feature Table...">
 <meta name="twitter:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -49,7 +49,14 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">1</span> Summary of Inputs</a></li></ul>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">featureMSEA</a></li>
+<li><a class="active" href="inputs.html"><span class="header-section-number">1</span> Summary of Inputs</a></li>
+<li><a class="" href="annotation.html"><span class="header-section-number">2</span> Annotation and Filtering</a></li>
+<li><a class="" href="fmsea-analysis.html"><span class="header-section-number">3</span> featureMSEA Analysis</a></li>
+<li><a class="" href="llm-interpretation.html"><span class="header-section-number">4</span> LLM-assisted Interpretation</a></li>
+<li><a class="" href="results.html"><span class="header-section-number">5</span> Analysis Results</a></li>
+</ul>
 
         <div class="book-extra">
           <p><a id="book-repo" href="https://github.com/tidymass/featuremsea_tutorial">View book source <i class="fab fa-github"></i></a></p>
@@ -60,81 +67,127 @@
 <h1>
 <span class="header-section-number">1</span> Summary of Inputs<a class="anchor" aria-label="anchor" href="#inputs"><i class="fas fa-link"></i></a>
 </h1>
-<p>featureMSEA runs through the <strong>TidyMass Shiny</strong> web application. Visit <a href="https://tidymassshiny.jaspershenlab.com" target="_blank">tidymassshiny.jaspershenlab.com</a> or run it locally, then navigate to <strong>fMSEA Analysis</strong> under <strong>Tidymass Shiny Toolkits</strong>.</p>
-<div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-1"></span>
-<img src="figures/fmsea_start.png" alt="Launching the fMSEA Analysis module" width="1363"><p class="caption">
-Figure 1.1: Launching the fMSEA Analysis module
-</p>
-</div>
-<div id="required-files" class="section level2" number="1.1">
+<p>featureMSEA requires three inputs: a <strong>feature table</strong> from your LC-MS experiment, an <strong>MS1 metabolite database</strong> for annotation, and a <strong>metabolite set database</strong> for enrichment testing.</p>
+<div id="feature-table" class="section level2" number="1.1">
 <h2>
-<span class="header-section-number">1.1</span> Required files<a class="anchor" aria-label="anchor" href="#required-files"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.1</span> Feature Table<a class="anchor" aria-label="anchor" href="#feature-table"><i class="fas fa-link"></i></a>
 </h2>
-<p>Three <code>.rda</code> files are required. These can be prepared in R or downloaded from the demo package (see below).</p>
-<div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<img src="figures/fmsea_inputs.png" alt="Overview of required input files" width="303"><p class="caption">
-Figure 1.2: Overview of required input files
-</p>
-</div>
+<p>The feature table is the primary input and must be provided as an <code>.rda</code> file containing a data frame. Each row represents one metabolic feature detected in your LC-MS experiment. The following columns are required:</p>
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
-<col width="31%">
-<col width="68%">
+<col width="29%">
+<col width="22%">
+<col width="48%">
 </colgroup>
 <thead><tr class="header">
-<th>File</th>
+<th>Column</th>
+<th>Type</th>
 <th>Description</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td><strong>Feature Table</strong></td>
-<td>Processed feature table from your metabolomics experiment</td>
+<td><code>variable_id</code></td>
+<td>character</td>
+<td>Unique identifier for each metabolic feature</td>
 </tr>
 <tr class="even">
-<td><strong>MS1 Database</strong></td>
-<td>Metabolite reference database for annotation (KEGG or HMDB)</td>
+<td><code>mz</code></td>
+<td>numeric</td>
+<td>Measured mass-to-charge ratio (<em>m/z</em>)</td>
 </tr>
 <tr class="odd">
-<td><strong>Pathway Database</strong></td>
-<td>Pathway membership database (KEGG, HMDB, iMETpD, Reactome, or WikiPathways)</td>
+<td><code>rt</code></td>
+<td>numeric</td>
+<td>Retention time in <strong>seconds</strong>
+</td>
+</tr>
+<tr class="even">
+<td><code>condition</code></td>
+<td>numeric</td>
+<td>Phenotype-associated ranking statistic — use the absolute value of an effect-size measure such as signal-to-noise ratio (|SNR|), fold-change (|log₂FC|), or correlation coefficient (|r|)</td>
+</tr>
+<tr class="odd">
+<td><code>polarity</code></td>
+<td>character</td>
+<td>Ion mode: <code>"positive"</code> or <code>"negative"</code>
+</td>
+</tr>
+<tr class="even">
+<td><code>mean_intensity</code></td>
+<td>numeric</td>
+<td>Average feature intensity across all samples</td>
 </tr>
 </tbody>
 </table></div>
+<blockquote>
+<p><strong>Note on <code>condition</code>:</strong> featureMSEA ranks features from most to least biologically relevant before running enrichment. A larger <code>condition</code> value means a feature is ranked higher. Use absolute values — the direction of change is captured by the enrichment score sign (positive NES = pathway enriched among up-regulated features; negative NES = enriched among down-regulated features).</p>
+</blockquote>
 </div>
-<div id="demo-data" class="section level2" number="1.2">
+<div id="databases" class="section level2" number="1.2">
 <h2>
-<span class="header-section-number">1.2</span> Demo data<a class="anchor" aria-label="anchor" href="#demo-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2</span> Reference Databases<a class="anchor" aria-label="anchor" href="#databases"><i class="fas fa-link"></i></a>
 </h2>
-<p>A ready-to-use demo package is available on <a href="https://drive.google.com/file/d/1iuN0SvBybYlKzbHHSrqSRvKG-V18KG5Y/view?usp=drive_link" target="_blank">Google Drive</a>. Download and unzip; the package contains:</p>
+<p>Two reference databases are required and must also be provided as <code>.rda</code> files.</p>
+<p><strong>MS1 metabolite database</strong> — used for accurate-mass-based feature annotation (<em>m/z</em> matching). Supported options:</p>
 <ul>
-<li>
-<code>feature_table.rda</code> — processed feature table</li>
-<li>
-<code>ms1_database.rda</code> — KEGG MS1 annotation database</li>
-<li>
-<code>pathway_database.rda</code> — KEGG pathway database</li>
+<li>KEGG</li>
+<li>HMDB</li>
 </ul>
+<p><strong>Metabolite set database</strong> — defines the sets of metabolites tested for enrichment. Supported options:</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="43%">
+<col width="56%">
+</colgroup>
+<thead><tr class="header">
+<th>Database</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>KEGG</td>
+<td>Metabolic pathway maps</td>
+</tr>
+<tr class="even">
+<td>PathBank</td>
+<td>Comprehensive human pathway collection</td>
+</tr>
+<tr class="odd">
+<td>WikiPathways</td>
+<td>Community-curated pathways</td>
+</tr>
+<tr class="even">
+<td>Reactome</td>
+<td>Detailed reaction-level pathways</td>
+</tr>
+<tr class="odd">
+<td>
+<strong>iMetPD</strong> <em>(recommended)</em>
+</td>
+<td>Integrated resource consolidating all five sources</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Tip:</strong> iMetPD provides the broadest pathway coverage and is the recommended choice for most analyses.</p>
+</blockquote>
 </div>
 <div id="uploading" class="section level2" number="1.3">
 <h2>
-<span class="header-section-number">1.3</span> Uploading files<a class="anchor" aria-label="anchor" href="#uploading"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.3</span> Uploading Data<a class="anchor" aria-label="anchor" href="#uploading"><i class="fas fa-link"></i></a>
 </h2>
-<p>Click the three buttons in the upload panel to select each <code>.rda</code> file from your local computer.</p>
-<div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-3"></span>
-<img src="figures/files_upload.png" alt="Selecting the three input files" width="1385"><p class="caption">
-Figure 1.3: Selecting the three input files
+<p>Use the three upload buttons in the <strong>Data Upload</strong> panel to load your feature table, MS1 database, and metabolite set database.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="figures/data_upload.png" alt="Data upload panel: feature table, MS1 database, and metabolite set database" width="90%"><p class="caption">
+Figure 1.1: Data upload panel: feature table, MS1 database, and metabolite set database
 </p>
 </div>
-<blockquote>
-<p><strong>Shortcut:</strong> If you already have a saved <code>fmsea_result.rda</code> from a previous run, upload it via <strong>Existing Results</strong> to skip annotation and enrichment and go directly to visualization.</p>
-</blockquote>
-<div class="figure">
-<span style="display:block;" id="fig:unnamed-chunk-4"></span>
-<img src="figures/results_upload.png" alt="Uploading an existing results object" width="1896"><p class="caption">
-Figure 1.4: Uploading an existing results object
+<p>If you have already completed a previous featureMSEA run, you can upload the saved <code>fmsea_result.rda</code> directly. This skips annotation and enrichment entirely and loads the prior results straight into the visualization panel.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="figures/result_upload.png" alt="Uploading a previously saved result to resume from the visualization step" width="90%"><p class="caption">
+Figure 1.2: Uploading a previously saved result to resume from the visualization step
 </p>
 </div>
 
@@ -142,15 +195,21 @@ Figure 1.4: Uploading an existing results object
 </div>
 
   <div class="chapter-nav">
-<div class="empty"></div>
-<div class="empty"></div>
+<div class="prev"><a href="index.html">featureMSEA</a></div>
+<div class="next"><a href="annotation.html"><span class="header-section-number">2</span> Annotation and Filtering</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#inputs"><span class="header-section-number">1</span> Summary of Inputs</a></li>
+<li><a class="nav-link" href="#feature-table"><span class="header-section-number">1.1</span> Feature Table</a></li>
+<li><a class="nav-link" href="#databases"><span class="header-section-number">1.2</span> Reference Databases</a></li>
+<li><a class="nav-link" href="#uploading"><span class="header-section-number">1.3</span> Uploading Data</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          
+<li><a id="book-source" href="https://github.com/tidymass/featuremsea_tutorial/blob/main/01-inputs.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tidymass/featuremsea_tutorial/edit/main/01-inputs.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

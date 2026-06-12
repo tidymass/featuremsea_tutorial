@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>5 Data Visualization | featureMSEA Tutorial</title>
+<title>5 Analysis Results | featureMSEA Tutorial</title>
 <meta name="author" content="TidyMass Team">
-<meta name="description" content="After Step 2 completes, results appear in the Analysis Results panel on the right. Clicking any row in the significant modules table drives the enrichment plot, annotation table, and — if Step 3...">
+<meta name="description" content="After Step 2 completes, results appear in the Analysis Results panel on the right. The panel is driven by row selection in the significant modules table — clicking a row updates the enrichment...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
-<meta property="og:title" content="5 Data Visualization | featureMSEA Tutorial">
+<meta property="og:title" content="5 Analysis Results | featureMSEA Tutorial">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://tidymass.github.io/featuremsea_tutorial/visualization.html">
+<meta property="og:url" content="https://tidymass.github.io/featuremsea_tutorial/results.html">
 <meta property="og:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
-<meta property="og:description" content="After Step 2 completes, results appear in the Analysis Results panel on the right. Clicking any row in the significant modules table drives the enrichment plot, annotation table, and — if Step 3...">
+<meta property="og:description" content="After Step 2 completes, results appear in the Analysis Results panel on the right. The panel is driven by row selection in the significant modules table — clicking a row updates the enrichment...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="5 Data Visualization | featureMSEA Tutorial">
-<meta name="twitter:description" content="After Step 2 completes, results appear in the Analysis Results panel on the right. Clicking any row in the significant modules table drives the enrichment plot, annotation table, and — if Step 3...">
+<meta name="twitter:title" content="5 Analysis Results | featureMSEA Tutorial">
+<meta name="twitter:description" content="After Step 2 completes, results appear in the Analysis Results panel on the right. The panel is driven by row selection in the significant modules table — clicking a row updates the enrichment...">
 <meta name="twitter:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -55,7 +55,7 @@
 <li><a class="" href="annotation.html"><span class="header-section-number">2</span> Annotation and Filtering</a></li>
 <li><a class="" href="fmsea-analysis.html"><span class="header-section-number">3</span> featureMSEA Analysis</a></li>
 <li><a class="" href="llm-interpretation.html"><span class="header-section-number">4</span> LLM-assisted Interpretation</a></li>
-<li><a class="active" href="visualization.html"><span class="header-section-number">5</span> Data Visualization</a></li>
+<li><a class="active" href="results.html"><span class="header-section-number">5</span> Analysis Results</a></li>
 </ul>
 
         <div class="book-extra">
@@ -63,17 +63,11 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="visualization" class="section level1" number="5">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="results" class="section level1" number="5">
 <h1>
-<span class="header-section-number">5</span> Data Visualization<a class="anchor" aria-label="anchor" href="#visualization"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5</span> Analysis Results<a class="anchor" aria-label="anchor" href="#results"><i class="fas fa-link"></i></a>
 </h1>
-<p>After Step 2 completes, results appear in the <strong>Analysis Results</strong> panel on the right. Clicking any row in the significant modules table drives the enrichment plot, annotation table, and — if Step 3 has been run — the LLM evaluation panel below it.</p>
-<div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-8"></span>
-<img src="figures/fmsea_visulization.png" alt="Analysis Results panel overview" width="90%"><p class="caption">
-Figure 5.1: Analysis Results panel overview
-</p>
-</div>
+<p>After Step 2 completes, results appear in the <strong>Analysis Results</strong> panel on the right. The panel is driven by row selection in the significant modules table — clicking a row updates the enrichment plot, annotation table, and LLM evaluation panel below.</p>
 <div id="pathway-table" class="section level2" number="5.1">
 <h2>
 <span class="header-section-number">5.1</span> Significant Modules Table<a class="anchor" aria-label="anchor" href="#pathway-table"><i class="fas fa-link"></i></a>
@@ -107,31 +101,27 @@ Figure 5.1: Analysis Results panel overview
 </tr>
 </tbody>
 </table></div>
-<p>Click any row to update the enrichment plot, annotation table, and LLM evaluation panel for that metabolite set. The full table can be exported via <strong>Download Table (CSV)</strong>.</p>
-</div>
-<div id="enrichment-plot" class="section level2" number="5.2">
-<h2>
-<span class="header-section-number">5.2</span> Enrichment Plot<a class="anchor" aria-label="anchor" href="#enrichment-plot"><i class="fas fa-link"></i></a>
-</h2>
-<p>The enrichment plot shows the running enrichment score across the ranked feature list for the selected metabolite set. The peak of the curve marks the leading edge — the subset of annotated features most responsible for the enrichment signal. Click <strong>Download Plot</strong> to export as PNG or PDF.</p>
+<p>Clicking a row triggers the panels below. The full table can be exported via <strong>Download Table (CSV)</strong>.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-9"></span>
-<img src="figures/enrichment.png" alt="Enrichment score plot for a selected metabolite set" width="90%"><p class="caption">
-Figure 5.2: Enrichment score plot for a selected metabolite set
+<span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<img src="figures/figure5_1.png" alt="Selecting a significant module renders the enrichment plot below the table" width="90%"><p class="caption">
+Figure 5.1: Selecting a significant module renders the enrichment plot below the table
 </p>
 </div>
+<p>The enrichment plot shows the running enrichment score across the ranked feature list for the selected metabolite set. The peak of the curve marks the leading edge — the subset of annotated features most responsible for the enrichment signal. Export the plot via <strong>Download Plot</strong> (PNG or PDF).</p>
 </div>
-<div id="annotation-table" class="section level2" number="5.3">
+<div id="annotation-llm" class="section level2" number="5.2">
 <h2>
-<span class="header-section-number">5.3</span> Annotation Table<a class="anchor" aria-label="anchor" href="#annotation-table"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.2</span> Annotation Table and LLM Evaluation<a class="anchor" aria-label="anchor" href="#annotation-llm"><i class="fas fa-link"></i></a>
 </h2>
-<p>Below the enrichment plot, the annotation table lists the leading edge features for the selected metabolite set, generated from the Step 1 annotation results. It shows the feature-level annotation details for compounds driving the enrichment. Export via <strong>Download Table (CSV)</strong>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-9"></span>
+<img src="figures/figure5_2.png" alt="Annotation table and Pathway LLM Evaluation panel" width="90%"><p class="caption">
+Figure 5.2: Annotation table and Pathway LLM Evaluation panel
+</p>
 </div>
-<div id="llm-summary" class="section level2" number="5.4">
-<h2>
-<span class="header-section-number">5.4</span> LLM Evaluation Summary<a class="anchor" aria-label="anchor" href="#llm-summary"><i class="fas fa-link"></i></a>
-</h2>
-<p>If Step 3 has been completed, selecting a row in the significant modules table also populates an LLM evaluation panel. This panel displays the following fields for the selected metabolite set:</p>
+<p><strong>Annotation Table</strong> — lists the leading edge features for the selected metabolite set, showing feature-level annotation details for the compounds driving the enrichment. Export via <strong>Download Table (CSV)</strong>.</p>
+<p><strong>Pathway LLM Evaluation</strong> — populated only after Step 3 completes. Displays the following fields for the selected metabolite set:</p>
 <div class="inline-table"><table class="table table-sm">
 <colgroup>
 <col width="35%">
@@ -152,7 +142,7 @@ Figure 5.2: Enrichment score plot for a selected metabolite set
 </tr>
 <tr class="odd">
 <td><strong>Matrix Confidence Score</strong></td>
-<td>LLM-assigned score (0–100) reflecting biological plausibility of the set within the specified matrix</td>
+<td>LLM-assigned score (0–100) reflecting biological plausibility within the specified matrix</td>
 </tr>
 <tr class="even">
 <td><strong>Matrix Confidence Reason</strong></td>
@@ -176,7 +166,7 @@ Figure 5.2: Enrichment score plot for a selected metabolite set
 </tr>
 </tbody>
 </table></div>
-<p>This panel is only rendered after Step 3 completes; if LLM evaluation has not been run, the panel does not appear.</p>
+<p>If Step 3 has not been run, the LLM Evaluation panel does not appear.</p>
 
 </div>
 </div>
@@ -187,11 +177,9 @@ Figure 5.2: Enrichment score plot for a selected metabolite set
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#visualization"><span class="header-section-number">5</span> Data Visualization</a></li>
+<li><a class="nav-link" href="#results"><span class="header-section-number">5</span> Analysis Results</a></li>
 <li><a class="nav-link" href="#pathway-table"><span class="header-section-number">5.1</span> Significant Modules Table</a></li>
-<li><a class="nav-link" href="#enrichment-plot"><span class="header-section-number">5.2</span> Enrichment Plot</a></li>
-<li><a class="nav-link" href="#annotation-table"><span class="header-section-number">5.3</span> Annotation Table</a></li>
-<li><a class="nav-link" href="#llm-summary"><span class="header-section-number">5.4</span> LLM Evaluation Summary</a></li>
+<li><a class="nav-link" href="#annotation-llm"><span class="header-section-number">5.2</span> Annotation Table and LLM Evaluation</a></li>
 </ul>
 
       <div class="book-extra">

@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>5 LLM-assisted Interpretation | featureMSEA Tutorial</title>
+<title>4 LLM-assisted Interpretation | featureMSEA Tutorial</title>
 <meta name="author" content="TidyMass Team">
-<meta name="description" content="Step 3 is an optional module that uses Large Language Models (LLMs) to provide biological context for the enriched pathways identified in Step 2.  Figure 5.1: LLM evaluation interface   5.1...">
+<meta name="description" content="Step 3 is an optional module that uses Large Language Models (LLMs) to evaluate the biological plausibility of enriched metabolite sets identified in Step 2.  Figure 4.1: LLM evaluation interface ...">
 <meta name="generator" content="bookdown 0.43 with bs4_book()">
-<meta property="og:title" content="5 LLM-assisted Interpretation | featureMSEA Tutorial">
+<meta property="og:title" content="4 LLM-assisted Interpretation | featureMSEA Tutorial">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://tidymass.github.io/featuremsea_tutorial/llm-interpretation.html">
 <meta property="og:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
-<meta property="og:description" content="Step 3 is an optional module that uses Large Language Models (LLMs) to provide biological context for the enriched pathways identified in Step 2.  Figure 5.1: LLM evaluation interface   5.1...">
+<meta property="og:description" content="Step 3 is an optional module that uses Large Language Models (LLMs) to evaluate the biological plausibility of enriched metabolite sets identified in Step 2.  Figure 4.1: LLM evaluation interface ...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="5 LLM-assisted Interpretation | featureMSEA Tutorial">
-<meta name="twitter:description" content="Step 3 is an optional module that uses Large Language Models (LLMs) to provide biological context for the enriched pathways identified in Step 2.  Figure 5.1: LLM evaluation interface   5.1...">
+<meta name="twitter:title" content="4 LLM-assisted Interpretation | featureMSEA Tutorial">
+<meta name="twitter:description" content="Step 3 is an optional module that uses Large Language Models (LLMs) to evaluate the biological plausibility of enriched metabolite sets identified in Step 2.  Figure 4.1: LLM evaluation interface ...">
 <meta name="twitter:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -50,12 +50,12 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="index.html">featureMSEA</a></li>
 <li><a class="" href="inputs.html"><span class="header-section-number">1</span> Summary of Inputs</a></li>
 <li><a class="" href="annotation.html"><span class="header-section-number">2</span> Annotation and Filtering</a></li>
 <li><a class="" href="fmsea-analysis.html"><span class="header-section-number">3</span> featureMSEA Analysis</a></li>
-<li><a class="" href="visualization.html"><span class="header-section-number">4</span> Data Visualization</a></li>
-<li><a class="active" href="llm-interpretation.html"><span class="header-section-number">5</span> LLM-assisted Interpretation</a></li>
+<li><a class="active" href="llm-interpretation.html"><span class="header-section-number">4</span> LLM-assisted Interpretation</a></li>
+<li><a class="" href="results.html"><span class="header-section-number">5</span> Analysis Results</a></li>
 </ul>
 
         <div class="book-extra">
@@ -63,49 +63,49 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="llm-interpretation" class="section level1" number="5">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="llm-interpretation" class="section level1" number="4">
 <h1>
-<span class="header-section-number">5</span> LLM-assisted Interpretation<a class="anchor" aria-label="anchor" href="#llm-interpretation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4</span> LLM-assisted Interpretation<a class="anchor" aria-label="anchor" href="#llm-interpretation"><i class="fas fa-link"></i></a>
 </h1>
-<p>Step 3 is an <strong>optional</strong> module that uses Large Language Models (LLMs) to provide biological context for the enriched pathways identified in Step 2.</p>
+<p>Step 3 is an <strong>optional</strong> module that uses Large Language Models (LLMs) to evaluate the biological plausibility of enriched metabolite sets identified in Step 2.</p>
 <div class="figure" style="text-align: center">
-<span style="display:block;" id="fig:unnamed-chunk-9"></span>
-<img src="figures/fmsea_llm.png" alt="LLM evaluation interface" width="90%"><p class="caption">
-Figure 5.1: LLM evaluation interface
+<span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="figures/step3.png" alt="LLM evaluation interface" width="90%"><p class="caption">
+Figure 4.1: LLM evaluation interface
 </p>
 </div>
-<div id="modes" class="section level2" number="5.1">
+<div id="modes" class="section level2" number="4.1">
 <h2>
-<span class="header-section-number">5.1</span> Evaluation modes<a class="anchor" aria-label="anchor" href="#modes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1</span> Evaluation modes<a class="anchor" aria-label="anchor" href="#modes"><i class="fas fa-link"></i></a>
 </h2>
-<div id="matrix" class="section level3" number="5.1.1">
+<div id="matrix-confidence" class="section level3" number="4.1.1">
 <h3>
-<span class="header-section-number">5.1.1</span> Matrix Relevance Analysis<a class="anchor" aria-label="anchor" href="#matrix"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.1</span> Matrix Confidence Assessment<a class="anchor" aria-label="anchor" href="#matrix-confidence"><i class="fas fa-link"></i></a>
 </h3>
-<p>Scores how reliably metabolites detected in your biological matrix are expected to reflect pathway activity.</p>
+<p>Scores the biological plausibility of each enriched metabolite set within the specified biological sample matrix.</p>
 <ul>
 <li>
 <strong>Input:</strong> Biological matrix type (e.g., <code>"urine"</code>, <code>"plasma"</code>, <code>"serum"</code>, <code>"blood"</code>, <code>"feces"</code>)</li>
 <li>
-<strong>Output:</strong> Per-pathway confidence score based on matrix–pathway reliability</li>
+<strong>Output:</strong> Per-metabolite-set matrix confidence score (0–100) reflecting whether the metabolite set represents a coherent and biologically plausible biochemical entity within the specified sample matrix</li>
 </ul>
 </div>
-<div id="literature" class="section level3" number="5.1.2">
+<div id="topic-relevance" class="section level3" number="4.1.2">
 <h3>
-<span class="header-section-number">5.1.2</span> Literature Relevance Analysis<a class="anchor" aria-label="anchor" href="#literature"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.1.2</span> Topic Relevance Assessment<a class="anchor" aria-label="anchor" href="#topic-relevance"><i class="fas fa-link"></i></a>
 </h3>
-<p>Searches PubMed and scores each enriched pathway based on published evidence for your specific research context.</p>
+<p>Searches PubMed and scores each enriched metabolite set based on published evidence linking it to your specific research context.</p>
 <ul>
 <li>
 <strong>Input:</strong> Research topic (e.g., <code>"type 2 diabetes"</code>, <code>"colorectal cancer"</code>, <code>"pregnancy"</code>)</li>
 <li>
-<strong>Output:</strong> Per-pathway literature support score with summarized evidence</li>
+<strong>Output:</strong> Per-metabolite-set topic relevance score with supporting PubMed literature (PMIDs)</li>
 </ul>
 </div>
 </div>
-<div id="api" class="section level2" number="5.2">
+<div id="api" class="section level2" number="4.2">
 <h2>
-<span class="header-section-number">5.2</span> API configuration<a class="anchor" aria-label="anchor" href="#api"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.2</span> API configuration<a class="anchor" aria-label="anchor" href="#api"><i class="fas fa-link"></i></a>
 </h2>
 <p>featureMSEA supports two LLM providers:</p>
 <div class="inline-table"><table class="table table-sm">
@@ -129,16 +129,16 @@ Figure 5.1: LLM evaluation interface
 </tr>
 <tr class="even">
 <td><strong>OpenAI</strong></td>
-<td>GPT-4o / GPT-4</td>
+<td>GPT series</td>
 <td>May produce more nuanced biological summaries</td>
 </tr>
 </tbody>
 </table></div>
 <p>Enter your API key in the <strong>API Key</strong> field before running. Keys are not stored or transmitted beyond the selected LLM provider.</p>
 </div>
-<div id="running" class="section level2" number="5.3">
+<div id="running" class="section level2" number="4.3">
 <h2>
-<span class="header-section-number">5.3</span> Running the evaluation<a class="anchor" aria-label="anchor" href="#running"><i class="fas fa-link"></i></a>
+<span class="header-section-number">4.3</span> Running the evaluation<a class="anchor" aria-label="anchor" href="#running"><i class="fas fa-link"></i></a>
 </h2>
 <ol style="list-style-type: decimal">
 <li>Enter the <strong>Sample Source</strong> (biological matrix) and/or <strong>Research Topic</strong>.</li>
@@ -146,35 +146,42 @@ Figure 5.1: LLM evaluation interface
 <li>Select your <strong>API Provider</strong> and enter your <strong>API Key</strong>.</li>
 <li>Click <strong>Run LLM Evaluation</strong>.</li>
 </ol>
-<p>Results are returned as a scored table per pathway. Download the full report via <strong>Download LLM Evaluation</strong>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<img src="figures/step3_running.png" alt="LLM evaluation running" width="90%"><p class="caption">
+Figure 4.2: LLM evaluation running
+</p>
+</div>
+<p>Results are returned as a scored table per metabolite set. Download the full report via <strong>Download LLM Evaluation</strong>.</p>
 <blockquote>
-<p><strong>Caution:</strong> LLM outputs are probabilistic. Always verify AI-generated interpretations against primary literature. Use this module to guide hypothesis generation, not to replace domain expertise.</p>
+<p><strong>Caution:</strong> LLM outputs are probabilistic. Always verify AI-generated interpretations against
+primary literature. Use this module to guide hypothesis generation, not to replace domain expertise.</p>
 </blockquote>
 
 </div>
 </div>
 
   <div class="chapter-nav">
-<div class="prev"><a href="visualization.html"><span class="header-section-number">4</span> Data Visualization</a></div>
-<div class="empty"></div>
+<div class="prev"><a href="fmsea-analysis.html"><span class="header-section-number">3</span> featureMSEA Analysis</a></div>
+<div class="next"><a href="results.html"><span class="header-section-number">5</span> Analysis Results</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#llm-interpretation"><span class="header-section-number">5</span> LLM-assisted Interpretation</a></li>
+<li><a class="nav-link" href="#llm-interpretation"><span class="header-section-number">4</span> LLM-assisted Interpretation</a></li>
 <li>
-<a class="nav-link" href="#modes"><span class="header-section-number">5.1</span> Evaluation modes</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#matrix"><span class="header-section-number">5.1.1</span> Matrix Relevance Analysis</a></li>
-<li><a class="nav-link" href="#literature"><span class="header-section-number">5.1.2</span> Literature Relevance Analysis</a></li>
+<a class="nav-link" href="#modes"><span class="header-section-number">4.1</span> Evaluation modes</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#matrix-confidence"><span class="header-section-number">4.1.1</span> Matrix Confidence Assessment</a></li>
+<li><a class="nav-link" href="#topic-relevance"><span class="header-section-number">4.1.2</span> Topic Relevance Assessment</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#api"><span class="header-section-number">5.2</span> API configuration</a></li>
-<li><a class="nav-link" href="#running"><span class="header-section-number">5.3</span> Running the evaluation</a></li>
+<li><a class="nav-link" href="#api"><span class="header-section-number">4.2</span> API configuration</a></li>
+<li><a class="nav-link" href="#running"><span class="header-section-number">4.3</span> Running the evaluation</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/tidymass/featuremsea_tutorial/blob/main/05-llm.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/tidymass/featuremsea_tutorial/edit/main/05-llm.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/tidymass/featuremsea_tutorial/blob/main/04-llm.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tidymass/featuremsea_tutorial/edit/main/04-llm.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
