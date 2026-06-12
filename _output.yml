@@ -1,0 +1,17 @@
+bookdown::bs4_book:
+  theme:
+    primary: "#6B8C6E"
+    base_font:
+      google: "Inter"
+    heading_font:
+      google: "Poppins"
+    code_font:
+      google: "JetBrains Mono"
+  logo: logos/featuremsea.png
+  repo:
+    base: https://github.com/tidymass/featuremsea_tutorial
+    branch: main
+  css: style.css
+  split_by: chapter
+  includes:
+    after_body: includes/footer.html

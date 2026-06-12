@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>2 Analysis Workflow | featureMSEA Tutorial</title>
+<meta name="author" content="TidyMass Team">
+<meta name="description" content="The featureMSEA shiny module walks you through the analysis in three sequential steps. Launch the TidyMass Shiny app and click fMSEA Analysis under Tidymass Shiny Toolkits.  Figure 2.1: fMSEA...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="2 Analysis Workflow | featureMSEA Tutorial">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://tidymass.github.io/featuremsea_tutorial/analysis.html">
+<meta property="og:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
+<meta property="og:description" content="The featureMSEA shiny module walks you through the analysis in three sequential steps. Launch the TidyMass Shiny app and click fMSEA Analysis under Tidymass Shiny Toolkits.  Figure 2.1: fMSEA...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 Analysis Workflow | featureMSEA Tutorial">
+<meta name="twitter:description" content="The featureMSEA shiny module walks you through the analysis in three sequential steps. Launch the TidyMass Shiny app and click fMSEA Analysis under Tidymass Shiny Toolkits.  Figure 2.1: fMSEA...">
+<meta name="twitter:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Inter-0.4.10/font.css" rel="stylesheet">
+<link href="libs/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
+<link href="libs/Poppins-0.4.10/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Feature-based Metabolite Set Enrichment Analysis">featureMSEA Tutorial</a>:
+        <small class="text-muted">Feature-based Metabolite Set Enrichment Analysis</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="installation.html"><span class="header-section-number">1</span> Installation</a></li>
+<li><a class="active" href="analysis.html"><span class="header-section-number">2</span> Analysis Workflow</a></li>
+<li><a class="" href="llm.html"><span class="header-section-number">3</span> LLM Evaluation</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tidymass/featuremsea_tutorial">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="analysis" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Analysis Workflow<a class="anchor" aria-label="anchor" href="#analysis"><i class="fas fa-link"></i></a>
+</h1>
+<p>The featureMSEA shiny module walks you through the analysis in three sequential steps. Launch the TidyMass Shiny app and click <strong>fMSEA Analysis</strong> under <strong>Tidymass Shiny Toolkits</strong>.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="figures/fmsea_start.png" alt="fMSEA Analysis module entry point" width="90%"><p class="caption">
+Figure 2.1: fMSEA Analysis module entry point
+</p>
+</div>
+<div id="upload" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Data Upload<a class="anchor" aria-label="anchor" href="#upload"><i class="fas fa-link"></i></a>
+</h2>
+<p>You need three required files in <code>.rda</code> format. Click the respective buttons to select each file.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="figures/fmsea_inputs.png" alt="Data upload interface" width="90%"><p class="caption">
+Figure 2.2: Data upload interface
+</p>
+</div>
+<p><strong>Required files:</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="31%">
+<col width="68%">
+</colgroup>
+<thead><tr class="header">
+<th>File</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><strong>Feature Table</strong></td>
+<td>Processed feature table from your metabolomics experiment</td>
+</tr>
+<tr class="even">
+<td><strong>MS1 Database</strong></td>
+<td>Metabolite database for annotation — KEGG or HMDB</td>
+</tr>
+<tr class="odd">
+<td><strong>Pathway Database</strong></td>
+<td>Pathway database — KEGG, HMDB, iMETpD, Reactome, or WikiPathways</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Optional:</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="31%">
+<col width="68%">
+</colgroup>
+<thead><tr class="header">
+<th>File</th>
+<th>Description</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td><strong>Existing Results</strong></td>
+<td>A previously saved <code>fmsea_result.rda</code> to resume a prior analysis</td>
+</tr></tbody>
+</table></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="figures/files_upload.png" alt="Selecting input files" width="90%"><p class="caption">
+Figure 2.3: Selecting input files
+</p>
+</div>
+<blockquote>
+<p><strong>Shortcut:</strong> If you already have a saved results object, upload it via <strong>Existing Results</strong> to skip Steps 1 and 2 entirely.</p>
+</blockquote>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="figures/results_upload.png" alt="Uploading an existing results object" width="90%"><p class="caption">
+Figure 2.4: Uploading an existing results object
+</p>
+</div>
+<hr>
+</div>
+<div id="step1" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Step 1 — Annotation<a class="anchor" aria-label="anchor" href="#step1"><i class="fas fa-link"></i></a>
+</h2>
+<p>The first step annotates metabolic features against the MS1 database by matching <em>m/z</em> values.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-7"></span>
+<img src="figures/fmsea_step1.png" alt="Step 1: annotation parameters" width="90%"><p class="caption">
+Figure 2.5: Step 1: annotation parameters
+</p>
+</div>
+<p><strong>Parameters:</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Parameter</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>Column</code></td>
+<td>Chromatographic column type</td>
+<td><code>"rp"</code></td>
+</tr>
+<tr class="even">
+<td><code>DB Type</code></td>
+<td>Annotation database</td>
+<td><code>"KEGG"</code></td>
+</tr>
+<tr class="odd">
+<td><code>MS1 PPM</code></td>
+<td>Mass accuracy threshold (ppm)</td>
+<td><code>15</code></td>
+</tr>
+<tr class="even">
+<td><code>RT Tol (s)</code></td>
+<td>Retention time tolerance for MFC clustering</td>
+<td><code>10</code></td>
+</tr>
+<tr class="odd">
+<td><code>Isotope No.</code></td>
+<td>Maximum isotopes to consider</td>
+<td><code>3</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Click <strong>Run Step 1</strong>. Annotation may take several minutes depending on feature count.</p>
+<blockquote>
+<p><strong>Tip:</strong> <code>"rp"</code> (reverse phase) is appropriate for most lipidomics and metabolomics experiments; use <code>"hilic"</code> for polar metabolite profiling.</p>
+</blockquote>
+<hr>
+</div>
+<div id="step2" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Step 2 — Enrichment Analysis<a class="anchor" aria-label="anchor" href="#step2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Step 2 uses the annotated features from Step 1 to run the GSEA-style pathway enrichment.</p>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-8"></span>
+<img src="figures/fmsea_step2.png" alt="Step 2: fMSEA analysis parameters" width="90%"><p class="caption">
+Figure 2.6: Step 2: fMSEA analysis parameters
+</p>
+</div>
+<p><strong>Parameters:</strong></p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Parameter</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>Threads</code></td>
+<td>Parallel processing threads</td>
+<td><code>3</code></td>
+</tr>
+<tr class="even">
+<td><code>Min Compounds</code></td>
+<td>Minimum pathway size (compounds)</td>
+<td><code>15</code></td>
+</tr>
+<tr class="odd">
+<td><code>Max Compounds</code></td>
+<td>Maximum pathway size (compounds)</td>
+<td><code>300</code></td>
+</tr>
+<tr class="even">
+<td><code>Permutations</code></td>
+<td>Statistical permutations</td>
+<td><code>1000</code></td>
+</tr>
+<tr class="odd">
+<td><code>Max Iterations</code></td>
+<td>Algorithm iterations</td>
+<td><code>1</code></td>
+</tr>
+<tr class="even">
+<td><code>FDR Thr</code></td>
+<td>FDR significance threshold</td>
+<td><code>0.05</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Click <strong>Run Step 2</strong>. Analysis time scales with the number of permutations and detected pathways.</p>
+<blockquote>
+<p><strong>Note:</strong> Increasing <code>Permutations</code> improves p-value precision but significantly increases runtime. <code>1000</code> is a good balance for exploratory analysis.</p>
+</blockquote>
+<hr>
+</div>
+<div id="results" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Results Visualization<a class="anchor" aria-label="anchor" href="#results"><i class="fas fa-link"></i></a>
+</h2>
+<p>After Step 2 completes, results are displayed in an interactive two-panel interface:</p>
+<ul>
+<li>
+<strong>Left panel — Significant Modules Table:</strong> Lists all significantly enriched pathways with NES (Normalized Enrichment Score), p-value, and FDR. Click any row to update the enrichment plot.</li>
+<li>
+<strong>Right panel — Enrichment Plot:</strong> Displays the running enrichment score profile for the selected pathway.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-9"></span>
+<img src="figures/fmsea_visulization.png" alt="Results visualization: pathway table and enrichment plot" width="90%"><p class="caption">
+Figure 2.7: Results visualization: pathway table and enrichment plot
+</p>
+</div>
+<p><strong>Download options:</strong></p>
+<ul>
+<li>Pathway tables as <strong>CSV</strong>
+</li>
+<li>Enrichment plots as <strong>PNG</strong> or <strong>PDF</strong>
+</li>
+</ul>
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="installation.html"><span class="header-section-number">1</span> Installation</a></div>
+<div class="next"><a href="llm.html"><span class="header-section-number">3</span> LLM Evaluation</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#analysis"><span class="header-section-number">2</span> Analysis Workflow</a></li>
+<li><a class="nav-link" href="#upload"><span class="header-section-number">2.1</span> Data Upload</a></li>
+<li><a class="nav-link" href="#step1"><span class="header-section-number">2.2</span> Step 1 — Annotation</a></li>
+<li><a class="nav-link" href="#step2"><span class="header-section-number">2.3</span> Step 2 — Enrichment Analysis</a></li>
+<li><a class="nav-link" href="#results"><span class="header-section-number">2.4</span> Results Visualization</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/tidymass/featuremsea_tutorial/blob/main/02-analysis.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tidymass/featuremsea_tutorial/edit/main/02-analysis.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>featureMSEA Tutorial</strong>: Feature-based Metabolite Set Enrichment Analysis" was written by TidyMass Team. It was last built on 2026-06-12.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

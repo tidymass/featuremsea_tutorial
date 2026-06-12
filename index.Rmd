@@ -1,0 +1,111 @@
+---
+title: "featureMSEA Tutorial"
+subtitle: "Feature-based Metabolite Set Enrichment Analysis"
+author: "TidyMass Team"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: references.bib
+description: |
+  Comprehensive tutorial for featureMSEA — a method for interpreting
+  metabolomics data by identifying enriched metabolic pathways using
+  feature-level enrichment scoring.
+url: https://tidymass.github.io/featuremsea_tutorial
+cover-image: figures/cover.png
+link-citations: true
+github-repo: tidymass/featuremsea_tutorial
+---
+
+# Overview {- #overview}
+
+```{=html}
+<div class="hero-banner">
+  <img src="logos/featuremsea.png" alt="featureMSEA" class="hero-logo-pkg">
+  <a href="https://jaspershenlab.com" target="_blank" class="lab-link">
+    <img src="logos/lab.png" alt="Shen Lab" class="hero-logo-lab">
+  </a>
+  <div class="hero-content">
+    <div class="hero-brand">
+      <div>
+        <div class="hero-kicker">Metabolomics pathway enrichment</div>
+        <div class="hero-title">featureMSEA</div>
+      </div>
+    </div>
+    <p class="hero-subtitle">Feature-based Metabolite Set Enrichment Analysis for untargeted metabolomics, from MS1 annotation to pathway interpretation.</p>
+    <div class="hero-actions">
+      <a class="hero-button primary" href="installation.html">Start tutorial</a>
+      <a class="hero-button" href="analysis.html">View workflow</a>
+    </div>
+  </div>
+  <div class="hero-panel" aria-label="featureMSEA workflow summary">
+    <div class="hero-metric"><span>01</span><strong>Annotation</strong><small>Match metabolic features</small></div>
+    <div class="hero-metric"><span>02</span><strong>Enrichment</strong><small>Rank pathways with fMSEA</small></div>
+    <div class="hero-metric"><span>03</span><strong>Evaluation</strong><small>Review biological evidence</small></div>
+  </div>
+</div>
+```
+
+**featureMSEA** (Feature-based Metabolite Set Enrichment Analysis) is a powerful method for interpreting metabolomics data. Unlike conventional over-representation analysis, featureMSEA operates directly on metabolic features — including unannotated ones — to identify enriched metabolic pathways without requiring a hard annotation cutoff.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo    = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.align = "center",
+  out.width = "90%"
+)
+```
+
+## What is featureMSEA? {-}
+
+featureMSEA extends the classic Gene Set Enrichment Analysis (GSEA) framework to metabolomics. It ranks all detected metabolic features by a signal statistic (e.g., fold-change × significance) and evaluates whether features assigned to a given pathway are non-randomly distributed toward the top or bottom of that ranked list.
+
+**Key advantages:**
+
+```{=html}
+<div class="feature-grid">
+  <div class="feature-card">
+    <span class="feature-label">Flexible input</span>
+    <strong>Works with unannotated features</strong>
+    <p>No strict annotation cutoff is required before pathway-level analysis.</p>
+  </div>
+  <div class="feature-card">
+    <span class="feature-label">Databases</span>
+    <strong>Multiple pathway resources</strong>
+    <p>Supports KEGG, HMDB, iMETpD, Reactome, and WikiPathways workflows.</p>
+  </div>
+  <div class="feature-card">
+    <span class="feature-label">Interpretation</span>
+    <strong>LLM-assisted evaluation</strong>
+    <p>Add optional AI-guided biological review for enriched pathways.</p>
+  </div>
+</div>
+```
+
+- Works with **unannotated features** — no strict annotation cutoff required
+- Supports **multiple pathway databases**: KEGG, HMDB, iMETpD, Reactome, WikiPathways
+- Integrates with **LLM-based biological evaluation** for AI-assisted interpretation
+- Fully integrated into the **TidyMass Shiny** web interface
+
+## Quick start {-}
+
+The featureMSEA workflow consists of three main steps:
+
+| Step | Description |
+|------|-------------|
+| **Step 1** | Metabolite annotation (MS1-based) |
+| **Step 2** | Pathway enrichment analysis |
+| **Step 3** | LLM evaluation *(optional)* |
+
+To get started, see [Installation] for setup instructions, then follow the [Analysis Workflow] chapter.
+
+## Citation {-}
+
+If you use featureMSEA in your research, please cite:
+
+> *featureMSEA: Feature-based Metabolite Set Enrichment Analysis for untargeted metabolomics.* TidyMass Team. (2024).
+
+---
+
+*This tutorial is built with [bookdown](https://bookdown.org) and maintained by the [TidyMass](https://www.tidymass.org) team.*
