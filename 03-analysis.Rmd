@@ -1,0 +1,22 @@
+# featureMSEA Analysis {#fmsea-analysis}
+
+Step 2 applies a GSEA-style enrichment algorithm to the annotated features from Step 1. Features are ranked by their signal statistic (fold-change × significance), and each pathway is scored by how non-randomly its member features are distributed within the ranked list.
+
+```{r echo=FALSE, fig.cap="Step 2: featureMSEA enrichment parameters"}
+knitr::include_graphics("figures/fmsea_step2.png")
+```
+
+## Parameters {#analysis-params}
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `Threads` | Parallel processing threads | `3` |
+| `Min Compounds` | Minimum pathway size (compounds) | `15` |
+| `Max Compounds` | Maximum pathway size (compounds) | `300` |
+| `Permutations` | Statistical permutations for p-value estimation | `1000` |
+| `Max Iterations` | Algorithm iterations | `1` |
+| `FDR Thr` | FDR significance threshold | `0.05` |
+
+> **Note:** Increasing `Permutations` improves p-value precision but increases runtime proportionally. `1000` permutations gives a good balance for exploratory analysis; use `5000`+ for publication-quality results.
+
+Click **Run Step 2**. Run time scales with the number of permutations and the size of the pathway database. A progress bar is shown during computation.

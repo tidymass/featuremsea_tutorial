@@ -3,9 +3,11 @@ delete_merged_file: true
 output_dir: "docs"
 rmd_files:
   - index.Rmd
-  - 01-installation.Rmd
-  - 02-analysis.Rmd
-  - 03-llm.Rmd
+  - 01-inputs.Rmd
+  - 02-annotation.Rmd
+  - 03-analysis.Rmd
+  - 04-visualization.Rmd
+  - 05-llm.Rmd
 language:
   ui:
     chapter_name: ""

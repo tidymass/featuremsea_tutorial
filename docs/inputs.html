@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>1 Summary of Inputs | featureMSEA Tutorial</title>
+<meta name="author" content="TidyMass Team">
+<meta name="description" content="featureMSEA runs through the TidyMass Shiny web application. Visit tidymassshiny.jaspershenlab.com or run it locally, then navigate to fMSEA Analysis under Tidymass Shiny Toolkits.  Figure 1.1:...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="1 Summary of Inputs | featureMSEA Tutorial">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://tidymass.github.io/featuremsea_tutorial/inputs.html">
+<meta property="og:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
+<meta property="og:description" content="featureMSEA runs through the TidyMass Shiny web application. Visit tidymassshiny.jaspershenlab.com or run it locally, then navigate to fMSEA Analysis under Tidymass Shiny Toolkits.  Figure 1.1:...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1 Summary of Inputs | featureMSEA Tutorial">
+<meta name="twitter:description" content="featureMSEA runs through the TidyMass Shiny web application. Visit tidymassshiny.jaspershenlab.com or run it locally, then navigate to fMSEA Analysis under Tidymass Shiny Toolkits.  Figure 1.1:...">
+<meta name="twitter:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Inter-0.4.10/font.css" rel="stylesheet">
+<link href="libs/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
+<link href="libs/Poppins-0.4.10/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Feature-based Metabolite Set Enrichment Analysis">featureMSEA Tutorial</a>:
+        <small class="text-muted">Feature-based Metabolite Set Enrichment Analysis</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">1</span> Summary of Inputs</a></li></ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tidymass/featuremsea_tutorial">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inputs" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Summary of Inputs<a class="anchor" aria-label="anchor" href="#inputs"><i class="fas fa-link"></i></a>
+</h1>
+<p>featureMSEA runs through the <strong>TidyMass Shiny</strong> web application. Visit <a href="https://tidymassshiny.jaspershenlab.com" target="_blank">tidymassshiny.jaspershenlab.com</a> or run it locally, then navigate to <strong>fMSEA Analysis</strong> under <strong>Tidymass Shiny Toolkits</strong>.</p>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<img src="figures/fmsea_start.png" alt="Launching the fMSEA Analysis module" width="1363"><p class="caption">
+Figure 1.1: Launching the fMSEA Analysis module
+</p>
+</div>
+<div id="required-files" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Required files<a class="anchor" aria-label="anchor" href="#required-files"><i class="fas fa-link"></i></a>
+</h2>
+<p>Three <code>.rda</code> files are required. These can be prepared in R or downloaded from the demo package (see below).</p>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="figures/fmsea_inputs.png" alt="Overview of required input files" width="303"><p class="caption">
+Figure 1.2: Overview of required input files
+</p>
+</div>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="31%">
+<col width="68%">
+</colgroup>
+<thead><tr class="header">
+<th>File</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><strong>Feature Table</strong></td>
+<td>Processed feature table from your metabolomics experiment</td>
+</tr>
+<tr class="even">
+<td><strong>MS1 Database</strong></td>
+<td>Metabolite reference database for annotation (KEGG or HMDB)</td>
+</tr>
+<tr class="odd">
+<td><strong>Pathway Database</strong></td>
+<td>Pathway membership database (KEGG, HMDB, iMETpD, Reactome, or WikiPathways)</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="demo-data" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Demo data<a class="anchor" aria-label="anchor" href="#demo-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>A ready-to-use demo package is available on <a href="https://drive.google.com/file/d/1iuN0SvBybYlKzbHHSrqSRvKG-V18KG5Y/view?usp=drive_link" target="_blank">Google Drive</a>. Download and unzip; the package contains:</p>
+<ul>
+<li>
+<code>feature_table.rda</code> — processed feature table</li>
+<li>
+<code>ms1_database.rda</code> — KEGG MS1 annotation database</li>
+<li>
+<code>pathway_database.rda</code> — KEGG pathway database</li>
+</ul>
+</div>
+<div id="uploading" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Uploading files<a class="anchor" aria-label="anchor" href="#uploading"><i class="fas fa-link"></i></a>
+</h2>
+<p>Click the three buttons in the upload panel to select each <code>.rda</code> file from your local computer.</p>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="figures/files_upload.png" alt="Selecting the three input files" width="1385"><p class="caption">
+Figure 1.3: Selecting the three input files
+</p>
+</div>
+<blockquote>
+<p><strong>Shortcut:</strong> If you already have a saved <code>fmsea_result.rda</code> from a previous run, upload it via <strong>Existing Results</strong> to skip annotation and enrichment and go directly to visualization.</p>
+</blockquote>
+<div class="figure">
+<span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="figures/results_upload.png" alt="Uploading an existing results object" width="1896"><p class="caption">
+Figure 1.4: Uploading an existing results object
+</p>
+</div>
+
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="empty"></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <div id="book-on-this-page"></div>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>featureMSEA Tutorial</strong>: Feature-based Metabolite Set Enrichment Analysis" was written by TidyMass Team. It was last built on 2026-06-12.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

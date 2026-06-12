@@ -1,0 +1,43 @@
+# Summary of Inputs {#inputs}
+
+featureMSEA runs through the **TidyMass Shiny** web application. Visit [tidymassshiny.jaspershenlab.com](https://tidymassshiny.jaspershenlab.com){target="_blank"} or run it locally, then navigate to **fMSEA Analysis** under **Tidymass Shiny Toolkits**.
+
+```{r echo=FALSE, fig.cap="Launching the fMSEA Analysis module"}
+knitr::include_graphics("figures/fmsea_start.png")
+```
+
+## Required files {#required-files}
+
+Three `.rda` files are required. These can be prepared in R or downloaded from the demo package (see below).
+
+```{r echo=FALSE, fig.cap="Overview of required input files"}
+knitr::include_graphics("figures/fmsea_inputs.png")
+```
+
+| File | Description |
+|------|-------------|
+| **Feature Table** | Processed feature table from your metabolomics experiment |
+| **MS1 Database** | Metabolite reference database for annotation (KEGG or HMDB) |
+| **Pathway Database** | Pathway membership database (KEGG, HMDB, iMETpD, Reactome, or WikiPathways) |
+
+## Demo data {#demo-data}
+
+A ready-to-use demo package is available on [Google Drive](https://drive.google.com/file/d/1iuN0SvBybYlKzbHHSrqSRvKG-V18KG5Y/view?usp=drive_link){target="_blank"}. Download and unzip; the package contains:
+
+- `feature_table.rda` — processed feature table
+- `ms1_database.rda` — KEGG MS1 annotation database
+- `pathway_database.rda` — KEGG pathway database
+
+## Uploading files {#uploading}
+
+Click the three buttons in the upload panel to select each `.rda` file from your local computer.
+
+```{r echo=FALSE, fig.cap="Selecting the three input files"}
+knitr::include_graphics("figures/files_upload.png")
+```
+
+> **Shortcut:** If you already have a saved `fmsea_result.rda` from a previous run, upload it via **Existing Results** to skip annotation and enrichment and go directly to visualization.
+
+```{r echo=FALSE, fig.cap="Uploading an existing results object"}
+knitr::include_graphics("figures/results_upload.png")
+```
