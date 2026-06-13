@@ -4,7 +4,7 @@ featureMSEA requires three inputs: a **feature table** from your LC-MS experimen
 
 ## Feature Table {#feature-table}
 
-The feature table is the primary input and must be provided as an `.rda` file containing a data frame. Each row represents one metabolic feature detected in your LC-MS experiment. The following columns are required:
+The feature table is the primary input and can be provided as either an `.rda` file (containing a data frame) or a `.csv` file. Each row represents one metabolic feature detected in your LC-MS experiment. The following columns are required:
 
 | Column | Type | Description |
 |--------|------|-------------|
@@ -15,11 +15,11 @@ The feature table is the primary input and must be provided as an `.rda` file co
 | `polarity` | character | Ion mode: `"positive"` or `"negative"` |
 | `mean_intensity` | numeric | Average feature intensity across all samples |
 
-> **Note on `condition`:** featureMSEA ranks features from most to least biologically relevant before running enrichment. A larger `condition` value means a feature is ranked higher. Use absolute values — the direction of change is captured by the enrichment score sign (positive NES = pathway enriched among up-regulated features; negative NES = enriched among down-regulated features).
+> **Note on `condition`:** featureMSEA ranks features in descending order by the `condition` value before running enrichment, such that features with larger values are ranked higher and contribute more strongly to the enrichment score. The `condition` column should contain the absolute value of a phenotype-associated statistic, such as |SNR|, |log₂FC|, or |correlation coefficient|. Because magnitude-based ranking is used, featureMSEA identifies metabolite sets that are collectively dysregulated, without distinguishing between directionally up- or down-regulated signals.
 
 ## Reference Databases {#databases}
 
-Two reference databases are required and must also be provided as `.rda` files.
+Two reference databases are required.
 
 **MS1 metabolite database** — used for accurate-mass-based feature annotation (*m/z* matching). Supported options:
 
@@ -30,19 +30,17 @@ Two reference databases are required and must also be provided as `.rda` files.
 
 | Database | Description |
 |----------|-------------|
-| KEGG | Metabolic pathway maps |
-| PathBank | Comprehensive human pathway collection |
-| WikiPathways | Community-curated pathways |
-| Reactome | Detailed reaction-level pathways |
-| **iMetPD** *(recommended)* | Integrated resource consolidating all five sources |
-
-> **Tip:** iMetPD provides the broadest pathway coverage and is the recommended choice for most analyses.
+| KEGG | Metabolic pathways from the Kyoto Encyclopedia of Genes and Genomes |
+| PathBank | Small molecule pathways with detailed biochemical context |
+| WikiPathways | Community-curated biological pathways |
+| Reactome | Manually curated human biological reactions and pathways |
+| **iMetPD** | Integrated metabolite pathway database compiled from multiple sources |
 
 ## Uploading Data {#uploading}
 
-Use the three upload buttons in the **Data Upload** panel to load your feature table, MS1 database, and metabolite set database.
+In the **Data Upload** panel, upload your feature table (`.rda` or `.csv`). The MS1 metabolite database and metabolite set database are not uploaded — select them from the dropdown options provided on the website.
 
-```{r echo=FALSE, fig.cap="Data upload panel: feature table, MS1 database, and metabolite set database"}
+```{r echo=FALSE, fig.cap="Data upload panel: upload the feature table and select the reference databases"}
 knitr::include_graphics("figures/data_upload.png")
 ```
 
