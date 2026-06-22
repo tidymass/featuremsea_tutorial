@@ -1,0 +1,45 @@
+# featureMSEA Analysis {#r-fmsea}
+
+## Step 4 — Run enrichment analysis {#r-step4}
+
+`perform_fmsea_analysis()` ranks features by the `condition` statistic, computes a running enrichment score for each metabolite set, and estimates significance via permutation testing. Results are returned as a `fmsea` S4 object.
+
+```r
+# Supported metabolite set databases: KEGG, SMPDB, IMETPD, Reactome, Wikipathway
+fmsea_result <- perform_fmsea_analysis(
+  pathway_database,           # metabolite set database object (from Step 1)
+  annotation_table,           # from process_annotation_table() in Step 3
+  ranking_table,              # from process_annotation_table() in Step 3
+  threads          = 6,
+  min.compounds.num = 15,
+  max.compounds.num = 300,
+  id.col           = "KEGG_ID",
+  perm.num         = 10000,
+  seed             = 123,
+  fdr.thr          = 0.05,
+  max.iter.num     = 3,
+  verbose          = TRUE
+)
+
+# Significant pathways are stored in:
+fmsea_result@significant_modules
+```
+
+## Parameters {#r-fmsea-params}
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `pathway_database` | Metabolite set database object. Its `database_info$source` must be one of `"KEGG"`, `"SMPDB"`, `"IMETPD"`, `"Reactome"`, `"Wikipathway"` | — |
+| `annotation_table` | Output from `process_annotation_table()` — links features to candidate metabolites | — |
+| `ranking_table` | Output from `process_annotation_table()` — provides the ranking statistic per feature | — |
+| `threads` | Number of CPU threads for parallel computing. `NULL` runs serially | `NULL` |
+| `min.compounds.num` | Minimum pathway size; smaller pathways are excluded from testing | `15` |
+| `max.compounds.num` | Maximum pathway size; larger pathways are excluded from testing | `300` |
+| `id.col` | Compound ID column used to match features to pathway members, e.g. `"KEGG_ID"` for KEGG or `"HMDB_ID"` for HMDB-based databases | `"KEGG_ID"` |
+| `perm.num` | Number of permutations for building the null distribution. Higher values give more stable p-values at the cost of runtime | `1000` |
+| `seed` | Random seed for reproducible permutation testing | `123` |
+| `fdr.thr` | FDR threshold; pathways with FDR below this value are kept in `significant_modules` | `0.05` |
+| `max.iter.num` | featureMSEA re-weights annotations based on significant pathways and re-runs enrichment iteratively; this caps the number of iterations | `3` |
+| `verbose` | Print progress messages during the run | `TRUE` |
+
+> **Note:** Increasing `perm.num` improves p-value precision but increases runtime proportionally. `1000` permutations gives a good balance for exploratory analysis; use `10,000`+ for publication-quality results.

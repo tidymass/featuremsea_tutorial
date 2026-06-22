@@ -1,0 +1,26 @@
+# (PART) Part II: R Package {-}
+
+# Installation {#r-installation}
+
+**featureMSEA** implements Feature-Based Metabolite Set Enrichment Analysis — a method that performs functional interpretation directly from ranked mass spectrometry features, without requiring complete metabolite identification or an arbitrary significance threshold to preselect features.
+
+Install the TidyMass dependencies first, then the featureMSEA package itself from GitHub:
+
+```r
+# Install TidyMass dependencies first
+remotes::install_gitlab("tidymass/masstools")
+remotes::install_gitlab("tidymass/massdataset")
+remotes::install_gitlab("tidymass/metid")
+
+# Install featuremsea
+remotes::install_github("tidymass/featuremsea")
+```
+
+Once installed, load all required packages at the start of each session:
+
+```r
+library(masstools)
+library(massdataset)
+library(metid)
+library(featuremsea)
+```

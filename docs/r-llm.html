@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>10 LLM-assisted Interpretation | featureMSEA Tutorial</title>
+<meta name="author" content="TidyMass Team">
+<meta name="description" content="10.1 Step 5 — Optional LLM evaluation Two optional functions use Large Language Models (LLMs) to evaluate the biological plausibility of enriched metabolite sets. Both require an API key from a...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="10 LLM-assisted Interpretation | featureMSEA Tutorial">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://tidymass.github.io/featuremsea_tutorial/r-llm.html">
+<meta property="og:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
+<meta property="og:description" content="10.1 Step 5 — Optional LLM evaluation Two optional functions use Large Language Models (LLMs) to evaluate the biological plausibility of enriched metabolite sets. Both require an API key from a...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10 LLM-assisted Interpretation | featureMSEA Tutorial">
+<meta name="twitter:description" content="10.1 Step 5 — Optional LLM evaluation Two optional functions use Large Language Models (LLMs) to evaluate the biological plausibility of enriched metabolite sets. Both require an API key from a...">
+<meta name="twitter:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Inter-0.4.10/font.css" rel="stylesheet">
+<link href="libs/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
+<link href="libs/Poppins-0.4.10/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Feature-based Metabolite Set Enrichment Analysis">featureMSEA Tutorial</a>:
+        <small class="text-muted">Feature-based Metabolite Set Enrichment Analysis</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">featureMSEA</a></li>
+<li class="book-part">Part I: Shiny App</li>
+<li><a class="" href="inputs.html"><span class="header-section-number">1</span> Summary of Inputs</a></li>
+<li><a class="" href="annotation.html"><span class="header-section-number">2</span> Annotation and Filtering</a></li>
+<li><a class="" href="fmsea-analysis.html"><span class="header-section-number">3</span> featureMSEA Analysis</a></li>
+<li><a class="" href="llm-interpretation.html"><span class="header-section-number">4</span> LLM-assisted Interpretation</a></li>
+<li><a class="" href="results.html"><span class="header-section-number">5</span> Analysis Results</a></li>
+<li class="book-part">Part II: R Package</li>
+<li><a class="" href="r-installation.html"><span class="header-section-number">6</span> Installation</a></li>
+<li><a class="" href="r-data-prep.html"><span class="header-section-number">7</span> Data Preparation</a></li>
+<li><a class="" href="r-annotation.html"><span class="header-section-number">8</span> MS1-based Annotation</a></li>
+<li><a class="" href="r-fmsea.html"><span class="header-section-number">9</span> featureMSEA Analysis</a></li>
+<li><a class="active" href="r-llm.html"><span class="header-section-number">10</span> LLM-assisted Interpretation</a></li>
+<li><a class="" href="r-visualization.html"><span class="header-section-number">11</span> Visualization</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tidymass/featuremsea_tutorial">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="r-llm" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> LLM-assisted Interpretation<a class="anchor" aria-label="anchor" href="#r-llm"><i class="fas fa-link"></i></a>
+</h1>
+<div id="r-step5" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Step 5 — Optional LLM evaluation<a class="anchor" aria-label="anchor" href="#r-step5"><i class="fas fa-link"></i></a>
+</h2>
+<p>Two optional functions use Large Language Models (LLMs) to evaluate the biological plausibility of enriched metabolite sets. Both require an API key from a supported provider.</p>
+<blockquote>
+<p><strong>API provider choice:</strong> Both functions require explicit <code>provider</code> selection — either <code>"openai"</code> or <code>"siliconflow"</code>. Default models: <code>gpt-4.1</code> / <code>Qwen/Qwen3-32B</code> (chat); <code>text-embedding-3-small</code> / <code>Qwen/Qwen3-Embedding-8B</code> (embedding). Custom models can be specified via the <code>model</code> argument.</p>
+</blockquote>
+</div>
+<div id="r-matrix-confidence" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Step 5a — Matrix confidence assessment<a class="anchor" aria-label="anchor" href="#r-matrix-confidence"><i class="fas fa-link"></i></a>
+</h2>
+<p>Assesses how reliably metabolites in your sample matrix (urine, plasma, etc.) are expected to indicate each pathway’s activity.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Using OpenAI</span></span>
+<span><span class="va">fmsea_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/featuremsea/man/analyze_matrix_relevance.html">analyze_matrix_relevance</a></span><span class="op">(</span></span>
+<span>  <span class="va">fmsea_result</span>,</span>
+<span>  sample_source <span class="op">=</span> <span class="st">"urine"</span>,         <span class="co"># biological matrix of your sample</span></span>
+<span>  api_key       <span class="op">=</span> <span class="st">"sk-openai-xxx"</span>, <span class="co"># OpenAI API key</span></span>
+<span>  provider      <span class="op">=</span> <span class="st">"openai"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Using SiliconFlow / Qwen (recommended for users in China)</span></span>
+<span><span class="va">fmsea_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/featuremsea/man/analyze_matrix_relevance.html">analyze_matrix_relevance</a></span><span class="op">(</span></span>
+<span>  results       <span class="op">=</span> <span class="va">fmsea_result</span>,</span>
+<span>  sample_source <span class="op">=</span> <span class="st">"plasma"</span>,</span>
+<span>  api_key       <span class="op">=</span> <span class="st">"sk-siliconflow-xxx"</span>,</span>
+<span>  provider      <span class="op">=</span> <span class="st">"siliconflow"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>The following columns are added to <code>fmsea_result@significant_modules</code>:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Column</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>matrix_confidence_score</code></td>
+<td>Integer score: 0 / 25 / 50 / 75 / 100</td>
+</tr>
+<tr class="even">
+<td><code>matrix_confidence_reason</code></td>
+<td>Brief explanation of the score</td>
+</tr>
+<tr class="odd">
+<td><code>matrix_source</code></td>
+<td>The sample source provided</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div id="r-topic-relevance" class="section level2" number="10.3">
+<h2>
+<span class="header-section-number">10.3</span> Step 5b — Topic relevance assessment<a class="anchor" aria-label="anchor" href="#r-topic-relevance"><i class="fas fa-link"></i></a>
+</h2>
+<p>Links significant pathways to a research topic using PubMed literature search and embedding-based re-ranking.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">fmsea_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/featuremsea/man/analyze_topic_relevance.html">analyze_topic_relevance</a></span><span class="op">(</span></span>
+<span>  results           <span class="op">=</span> <span class="va">fmsea_result</span>,</span>
+<span>  research_topic    <span class="op">=</span> <span class="st">"type 2 diabetes"</span>,</span>
+<span>  api_key           <span class="op">=</span> <span class="st">"sk-siliconflow-xxx"</span>,</span>
+<span>  provider          <span class="op">=</span> <span class="st">"siliconflow"</span>,</span>
+<span>  pubmed_api_key    <span class="op">=</span> <span class="cn">NULL</span>,   <span class="co"># optional; increases PubMed rate limit</span></span>
+<span>  similarity_cutoff <span class="op">=</span> <span class="fl">0.6</span>     <span class="co"># cosine similarity threshold for fuzzy matches</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>The following columns are added to <code>fmsea_result@significant_modules</code>:</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="38%">
+<col width="61%">
+</colgroup>
+<thead><tr class="header">
+<th>Column</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>literature_pmids_exact</code></td>
+<td>PMIDs from exact PubMed search</td>
+</tr>
+<tr class="even">
+<td><code>literature_pmids_fuzzy</code></td>
+<td>PMIDs from fuzzy search filtered by embedding similarity</td>
+</tr>
+<tr class="odd">
+<td><code>topic_confidence_score</code></td>
+<td>LLM score (0 / 25 / 50 / 75 / 100) when no literature is found</td>
+</tr>
+<tr class="even">
+<td><code>research_topic</code></td>
+<td>The research topic used</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Caution:</strong> LLM outputs are probabilistic. Always verify AI-generated interpretations against primary literature. Use this module to guide hypothesis generation, not to replace domain expertise.</p>
+</blockquote>
+
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="r-fmsea.html"><span class="header-section-number">9</span> featureMSEA Analysis</a></div>
+<div class="next"><a href="r-visualization.html"><span class="header-section-number">11</span> Visualization</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-llm"><span class="header-section-number">10</span> LLM-assisted Interpretation</a></li>
+<li><a class="nav-link" href="#r-step5"><span class="header-section-number">10.1</span> Step 5 — Optional LLM evaluation</a></li>
+<li><a class="nav-link" href="#r-matrix-confidence"><span class="header-section-number">10.2</span> Step 5a — Matrix confidence assessment</a></li>
+<li><a class="nav-link" href="#r-topic-relevance"><span class="header-section-number">10.3</span> Step 5b — Topic relevance assessment</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/tidymass/featuremsea_tutorial/blob/main/10-r-llm.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tidymass/featuremsea_tutorial/edit/main/10-r-llm.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>featureMSEA Tutorial</strong>: Feature-based Metabolite Set Enrichment Analysis" was written by TidyMass Team. It was last built on 2026-06-22.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

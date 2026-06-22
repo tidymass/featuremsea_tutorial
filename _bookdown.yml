@@ -8,6 +8,12 @@ rmd_files:
   - 03-analysis.Rmd
   - 04-llm.Rmd
   - 05-visualization.Rmd
+  - 06-r-installation.Rmd
+  - 07-r-data-prep.Rmd
+  - 08-r-annotation.Rmd
+  - 09-r-fmsea.Rmd
+  - 10-r-llm.Rmd
+  - 11-r-visualization.Rmd
 language:
   ui:
     chapter_name: ""

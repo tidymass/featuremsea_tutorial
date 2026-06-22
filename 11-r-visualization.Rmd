@@ -1,0 +1,39 @@
+# Visualization {#r-visualization}
+
+## Step 6 — Plot enrichment results {#r-step6}
+
+`plot_fmsea_plot()` generates a multi-panel enrichment plot for a single pathway of interest.
+
+```r
+# Plot enrichment results for a specific pathway
+plot_fmsea_plot(
+  fmsea_obj  = fmsea_result,
+  pathway_id = "hsa00010",                  # pathway ID from significant_modules
+  title      = "Glycolysis / Gluconeogenesis"
+)
+```
+
+The plot includes four panels:
+
+1. **Enrichment score curve** — the running enrichment score across the ranked feature list, with the peak marking the leading-edge boundary.
+2. **Ranked feature hits** — vertical bars showing where features annotated to pathway metabolites fall in the ranked list.
+3. **Annotation weights** — per-feature annotation confidence scores.
+4. **Pair weights** — feature–metabolite pair weights used in the enrichment scoring.
+
+To find valid `pathway_id` values, inspect the significant modules table:
+
+```r
+# View significant pathways and their IDs
+head(fmsea_result@significant_modules)
+```
+
+## Saving results {#r-saving}
+
+Export the full result object for later use or to resume analysis in the Shiny app:
+
+```r
+# Save result object
+save(fmsea_result, file = "fmsea_result.rda")
+```
+
+The saved `fmsea_result.rda` file can be uploaded directly to the Shiny app's Data Upload panel to skip re-running annotation and enrichment and proceed straight to interactive visualization.

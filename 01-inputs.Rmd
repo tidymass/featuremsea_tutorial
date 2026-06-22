@@ -1,3 +1,5 @@
+# (PART) Part I: Shiny App {-}
+
 # Summary of Inputs {#inputs}
 
 featureMSEA requires three inputs: a **feature table** from your LC-MS experiment, an **MS1 metabolite database** for annotation, and a **metabolite set database** for enrichment testing.

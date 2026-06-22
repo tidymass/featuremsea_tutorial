@@ -1,0 +1,41 @@
+# Data Preparation {#r-data-prep}
+
+## Required inputs {#r-inputs}
+
+The primary input for featureMSEA is a **feature table** — a data frame where each row represents one LC-MS feature. The following columns are required:
+
+| Column | Type | Description |
+|--------|------|-------------|
+| `variable_id` | character | Unique identifier for each metabolic feature |
+| `mz` | numeric | Measured mass-to-charge ratio (*m/z*) |
+| `rt` | numeric | Retention time in **seconds** |
+| `condition` | numeric | Phenotype-associated ranking statistic (absolute value): \|SNR\|, \|log₂FC\|, or \|r\| |
+| `polarity` | character | Ion mode: `"positive"` or `"negative"` |
+| `mean_intensity` | numeric | Average feature intensity across all samples |
+
+The analysis additionally requires two reference databases:
+
+- **MS1 metabolite database** — for accurate-mass-based feature annotation (*m/z* matching). Supported: KEGG, HMDB.
+- **Metabolite set database** — defines the sets of metabolites tested for enrichment. Supported: KEGG, SMPDB, IMETPD, Reactome, WikiPathways.
+
+Both databases can be downloaded from the [TidyMass website](https://www.tidymass.org/databases/).
+
+## Demo data {#r-demo-data}
+
+A ready-to-use demo feature table is available for download:
+
+- **Feature table**: [Demo data](https://drive.google.com/file/d/1UwjizHDok-k9yYI407IZ_IF-YHkZjVjI/view?usp=drive_link)
+- **MS1 database** and **Metabolite set databases**: [Download here](https://www.tidymass.org/databases/)
+
+Load the feature table and databases into your R session before proceeding to the annotation step:
+
+```r
+# Load feature table (if saved as .rda)
+load("feature_table.rda")        # loads object: feature_table
+
+# Load MS1 metabolite database (example: KEGG compound MS1 database)
+load("kegg_compound_ms1.rda")    # loads object: kegg_compound_ms1
+
+# Load metabolite set database (example: KEGG pathway database)
+load("pathway_database.rda")     # loads object: pathway_database
+```

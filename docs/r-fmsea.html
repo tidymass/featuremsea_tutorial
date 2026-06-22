@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>9 featureMSEA Analysis | featureMSEA Tutorial</title>
+<meta name="author" content="TidyMass Team">
+<meta name="description" content="9.1 Step 4 — Run enrichment analysis perform_fmsea_analysis() ranks features by the condition statistic, computes a running enrichment score for each metabolite set, and estimates significance via...">
+<meta name="generator" content="bookdown 0.43 with bs4_book()">
+<meta property="og:title" content="9 featureMSEA Analysis | featureMSEA Tutorial">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://tidymass.github.io/featuremsea_tutorial/r-fmsea.html">
+<meta property="og:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
+<meta property="og:description" content="9.1 Step 4 — Run enrichment analysis perform_fmsea_analysis() ranks features by the condition statistic, computes a running enrichment score for each metabolite set, and estimates significance via...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="9 featureMSEA Analysis | featureMSEA Tutorial">
+<meta name="twitter:description" content="9.1 Step 4 — Run enrichment analysis perform_fmsea_analysis() ranks features by the condition statistic, computes a running enrichment score for each metabolite set, and estimates significance via...">
+<meta name="twitter:image" content="https://tidymass.github.io/featuremsea_tutorial/figures/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Inter-0.4.10/font.css" rel="stylesheet">
+<link href="libs/JetBrains_Mono-0.4.10/font.css" rel="stylesheet">
+<link href="libs/Poppins-0.4.10/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.10.0/transition.js"></script><script src="libs/bs3compat-0.10.0/tabs.js"></script><script src="libs/bs3compat-0.10.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="Feature-based Metabolite Set Enrichment Analysis">featureMSEA Tutorial</a>:
+        <small class="text-muted">Feature-based Metabolite Set Enrichment Analysis</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">featureMSEA</a></li>
+<li class="book-part">Part I: Shiny App</li>
+<li><a class="" href="inputs.html"><span class="header-section-number">1</span> Summary of Inputs</a></li>
+<li><a class="" href="annotation.html"><span class="header-section-number">2</span> Annotation and Filtering</a></li>
+<li><a class="" href="fmsea-analysis.html"><span class="header-section-number">3</span> featureMSEA Analysis</a></li>
+<li><a class="" href="llm-interpretation.html"><span class="header-section-number">4</span> LLM-assisted Interpretation</a></li>
+<li><a class="" href="results.html"><span class="header-section-number">5</span> Analysis Results</a></li>
+<li class="book-part">Part II: R Package</li>
+<li><a class="" href="r-installation.html"><span class="header-section-number">6</span> Installation</a></li>
+<li><a class="" href="r-data-prep.html"><span class="header-section-number">7</span> Data Preparation</a></li>
+<li><a class="" href="r-annotation.html"><span class="header-section-number">8</span> MS1-based Annotation</a></li>
+<li><a class="active" href="r-fmsea.html"><span class="header-section-number">9</span> featureMSEA Analysis</a></li>
+<li><a class="" href="r-llm.html"><span class="header-section-number">10</span> LLM-assisted Interpretation</a></li>
+<li><a class="" href="r-visualization.html"><span class="header-section-number">11</span> Visualization</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/tidymass/featuremsea_tutorial">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="r-fmsea" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> featureMSEA Analysis<a class="anchor" aria-label="anchor" href="#r-fmsea"><i class="fas fa-link"></i></a>
+</h1>
+<div id="r-step4" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Step 4 — Run enrichment analysis<a class="anchor" aria-label="anchor" href="#r-step4"><i class="fas fa-link"></i></a>
+</h2>
+<p><code><a href="https://rdrr.io/pkg/featuremsea/man/perform_fmsea_analysis.html">perform_fmsea_analysis()</a></code> ranks features by the <code>condition</code> statistic, computes a running enrichment score for each metabolite set, and estimates significance via permutation testing. Results are returned as a <code>fmsea</code> S4 object.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Supported metabolite set databases: KEGG, SMPDB, IMETPD, Reactome, Wikipathway</span></span>
+<span><span class="va">fmsea_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/featuremsea/man/perform_fmsea_analysis.html">perform_fmsea_analysis</a></span><span class="op">(</span></span>
+<span>  <span class="va">pathway_database</span>,           <span class="co"># metabolite set database object (from Step 1)</span></span>
+<span>  <span class="va">annotation_table</span>,           <span class="co"># from process_annotation_table() in Step 3</span></span>
+<span>  <span class="va">ranking_table</span>,              <span class="co"># from process_annotation_table() in Step 3</span></span>
+<span>  threads          <span class="op">=</span> <span class="fl">6</span>,</span>
+<span>  min.compounds.num <span class="op">=</span> <span class="fl">15</span>,</span>
+<span>  max.compounds.num <span class="op">=</span> <span class="fl">300</span>,</span>
+<span>  id.col           <span class="op">=</span> <span class="st">"KEGG_ID"</span>,</span>
+<span>  perm.num         <span class="op">=</span> <span class="fl">10000</span>,</span>
+<span>  seed             <span class="op">=</span> <span class="fl">123</span>,</span>
+<span>  fdr.thr          <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>  max.iter.num     <span class="op">=</span> <span class="fl">3</span>,</span>
+<span>  verbose          <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Significant pathways are stored in:</span></span>
+<span><span class="va">fmsea_result</span><span class="op">@</span><span class="va">significant_modules</span></span></code></pre></div>
+</div>
+<div id="r-fmsea-params" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Parameters<a class="anchor" aria-label="anchor" href="#r-fmsea-params"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="33%">
+<col width="39%">
+<col width="27%">
+</colgroup>
+<thead><tr class="header">
+<th>Parameter</th>
+<th>Description</th>
+<th>Default</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>pathway_database</code></td>
+<td>Metabolite set database object. Its <code>database_info$source</code> must be one of <code>"KEGG"</code>, <code>"SMPDB"</code>, <code>"IMETPD"</code>, <code>"Reactome"</code>, <code>"Wikipathway"</code>
+</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><code>annotation_table</code></td>
+<td>Output from <code><a href="https://rdrr.io/pkg/featuremsea/man/process_annotation_table.html">process_annotation_table()</a></code> — links features to candidate metabolites</td>
+<td>—</td>
+</tr>
+<tr class="odd">
+<td><code>ranking_table</code></td>
+<td>Output from <code><a href="https://rdrr.io/pkg/featuremsea/man/process_annotation_table.html">process_annotation_table()</a></code> — provides the ranking statistic per feature</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td><code>threads</code></td>
+<td>Number of CPU threads for parallel computing. <code>NULL</code> runs serially</td>
+<td><code>NULL</code></td>
+</tr>
+<tr class="odd">
+<td><code>min.compounds.num</code></td>
+<td>Minimum pathway size; smaller pathways are excluded from testing</td>
+<td><code>15</code></td>
+</tr>
+<tr class="even">
+<td><code>max.compounds.num</code></td>
+<td>Maximum pathway size; larger pathways are excluded from testing</td>
+<td><code>300</code></td>
+</tr>
+<tr class="odd">
+<td><code>id.col</code></td>
+<td>Compound ID column used to match features to pathway members, e.g. <code>"KEGG_ID"</code> for KEGG or <code>"HMDB_ID"</code> for HMDB-based databases</td>
+<td><code>"KEGG_ID"</code></td>
+</tr>
+<tr class="even">
+<td><code>perm.num</code></td>
+<td>Number of permutations for building the null distribution. Higher values give more stable p-values at the cost of runtime</td>
+<td><code>1000</code></td>
+</tr>
+<tr class="odd">
+<td><code>seed</code></td>
+<td>Random seed for reproducible permutation testing</td>
+<td><code>123</code></td>
+</tr>
+<tr class="even">
+<td><code>fdr.thr</code></td>
+<td>FDR threshold; pathways with FDR below this value are kept in <code>significant_modules</code>
+</td>
+<td><code>0.05</code></td>
+</tr>
+<tr class="odd">
+<td><code>max.iter.num</code></td>
+<td>featureMSEA re-weights annotations based on significant pathways and re-runs enrichment iteratively; this caps the number of iterations</td>
+<td><code>3</code></td>
+</tr>
+<tr class="even">
+<td><code>verbose</code></td>
+<td>Print progress messages during the run</td>
+<td><code>TRUE</code></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Note:</strong> Increasing <code>perm.num</code> improves p-value precision but increases runtime proportionally. <code>1000</code> permutations gives a good balance for exploratory analysis; use <code>10,000</code>+ for publication-quality results.</p>
+</blockquote>
+
+</div>
+</div>
+
+  <div class="chapter-nav">
+<div class="prev"><a href="r-annotation.html"><span class="header-section-number">8</span> MS1-based Annotation</a></div>
+<div class="next"><a href="r-llm.html"><span class="header-section-number">10</span> LLM-assisted Interpretation</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#r-fmsea"><span class="header-section-number">9</span> featureMSEA Analysis</a></li>
+<li><a class="nav-link" href="#r-step4"><span class="header-section-number">9.1</span> Step 4 — Run enrichment analysis</a></li>
+<li><a class="nav-link" href="#r-fmsea-params"><span class="header-section-number">9.2</span> Parameters</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/tidymass/featuremsea_tutorial/blob/main/09-r-fmsea.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/tidymass/featuremsea_tutorial/edit/main/09-r-fmsea.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>featureMSEA Tutorial</strong>: Feature-based Metabolite Set Enrichment Analysis" was written by TidyMass Team. It was last built on 2026-06-22.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

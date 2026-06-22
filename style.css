@@ -266,6 +266,48 @@ ul.book-toc li a.active .header-section-number {
   padding: 0.1rem 0.38rem;
 }
 
+/* ── Syntax highlighting (dark-background overrides) ── */
+/* The bs4_book defaults target light backgrounds; these override for --code-bg (#0f172a). */
+#content pre code span.kw { color: #569cd6; }          /* keyword        — blue        */
+#content pre code span.fu { color: #dcdcaa; }          /* function        — yellow      */
+#content pre code span.op { color: #d4d4d4; }          /* operator        — light gray  */
+#content pre code span.st { color: #ce9178; }          /* string          — warm orange */
+#content pre code span.co { color: #6a9955; font-style: italic; } /* comment — muted green */
+#content pre code span.va { color: #9cdcfe; }          /* variable        — sky blue    */
+#content pre code span.dv { color: #b5cea8; }          /* decimal value   — pale green  */
+#content pre code span.fl { color: #b5cea8; }          /* float           — pale green  */
+#content pre code span.bn { color: #b5cea8; }          /* base number     — pale green  */
+#content pre code span.cn { color: #4fc1ff; }          /* constant        — bright blue */
+#content pre code span.dt { color: #4ec9b0; }          /* data type       — teal        */
+#content pre code span.ot { color: #569cd6; }          /* other           — blue        */
+#content pre code span.cf { color: #c586c0; }          /* control flow    — purple      */
+#content pre code span.bu { color: #dcdcaa; }          /* builtin         — yellow      */
+#content pre code span.im { color: #dcdcaa; font-weight: bold; } /* import — yellow     */
+#content pre code span.at { color: #9cdcfe; }          /* attribute       — sky blue    */
+#content pre code span.ss { color: #ce9178; }          /* special string  — warm orange */
+#content pre code span.ch { color: #ce9178; }          /* character       — warm orange */
+#content pre code span.sc { color: #ce9178; }          /* special char    — warm orange */
+#content pre code span.vs { color: #ce9178; }          /* verbatim string — warm orange */
+#content pre code span.pp { color: #c586c0; }          /* preprocessor    — purple      */
+#content pre code span.in { color: #6a9955; font-style: italic; } /* information  */
+#content pre code span.wa { color: #cca700; font-style: italic; } /* warning       — amber    */
+#content pre code span.cv { color: #6a9955; font-style: italic; } /* comment-verbatim        */
+#content pre code span.do { color: #6a9955; font-style: italic; } /* documentation comment   */
+#content pre code span.an { color: #6a9955; }          /* annotation      — muted green */
+#content pre code span.er { color: #f44747; font-weight: bold; }  /* error         — red      */
+#content pre code span.al { color: #f44747; font-weight: bold; }  /* alert         — red      */
+
+/* Links inside code blocks (downlit cross-references) inherit the token color */
+#content pre code span a {
+  color: inherit;
+  text-decoration-color: rgba(255, 255, 255, 0.18);
+  text-decoration-thickness: 1px;
+}
+#content pre code span a:hover {
+  color: inherit;
+  text-decoration-color: rgba(255, 255, 255, 0.55);
+}
+
 /* ── Blockquotes ────────────────────────────────── */
 #content blockquote {
   background: #f0fdf4;

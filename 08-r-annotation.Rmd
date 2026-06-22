@@ -1,0 +1,54 @@
+# MS1-based Annotation {#r-annotation}
+
+## Step 2 — Annotate feature table {#r-step2}
+
+Features are annotated against the MS1 database via accurate mass matching. Co-eluting features with similar retention times are grouped into **Metabolic Feature Clusters (MFCs)** to improve annotation confidence and reduce redundancy.
+
+```r
+annotation_table_final <-
+  annotate_feature_table(
+    feature_table       = feature_table,
+    column              = "rp",
+    metabolite_database = kegg_compound_ms1, # use downloaded MS1 database
+    database_type       = "KEGG",            # "KEGG" or "HMDB"
+    ms1_match_ppm       = 15,
+    mfc_rt_tol          = 10,
+    isotope_number      = 3
+  )
+```
+
+**Key parameters:**
+
+| Parameter | Description | Default |
+|-----------|-------------|---------|
+| `column` | Chromatographic column type: `"rp"` (reverse phase) or `"hilic"` | `"rp"` |
+| `database_type` | Annotation database: `"KEGG"` or `"HMDB"` | `"KEGG"` |
+| `ms1_match_ppm` | Mass accuracy threshold in ppm | `15` |
+| `mfc_rt_tol` | Retention time tolerance (seconds) for MFC clustering | `10` |
+| `isotope_number` | Maximum isotopes considered per feature | `3` |
+
+> **Tip:** Use `"rp"` for most lipidomics and general metabolomics experiments. Switch to `"hilic"` for polar metabolite profiling.
+
+## Step 3 — Remove redundant annotations {#r-step3}
+
+After initial annotation, redundant entries arising from isotopes, adducts, and in-source fragments are removed. The cleaned annotation table is then processed to produce the **ranking table** and **annotation table** used in enrichment analysis.
+
+```r
+annotation_table_final2 <-
+  featuremsea::remove_redundancy(
+    annotation_table = annotation_table_final
+  )
+
+results <- process_annotation_table(
+  annotation_table_final2 = annotation_table_final2,
+  database_type            = "KEGG"   # "KEGG" or "HMDB"
+)
+
+ranking_table    <- results$ranking_table
+annotation_table <- results$original_score_annotation
+```
+
+The two output objects feed directly into the enrichment step:
+
+- `ranking_table` — links each feature to its ranking statistic used for enrichment scoring.
+- `annotation_table` — links features to their candidate metabolite annotations.

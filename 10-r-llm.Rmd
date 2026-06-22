@@ -1,0 +1,63 @@
+# LLM-assisted Interpretation {#r-llm}
+
+## Step 5 — Optional LLM evaluation {#r-step5}
+
+Two optional functions use Large Language Models (LLMs) to evaluate the biological plausibility of enriched metabolite sets. Both require an API key from a supported provider.
+
+> **API provider choice:** Both functions require explicit `provider` selection — either `"openai"` or `"siliconflow"`. Default models: `gpt-4.1` / `Qwen/Qwen3-32B` (chat); `text-embedding-3-small` / `Qwen/Qwen3-Embedding-8B` (embedding). Custom models can be specified via the `model` argument.
+
+## Step 5a — Matrix confidence assessment {#r-matrix-confidence}
+
+Assesses how reliably metabolites in your sample matrix (urine, plasma, etc.) are expected to indicate each pathway's activity.
+
+```r
+# Using OpenAI
+fmsea_result <- analyze_matrix_relevance(
+  fmsea_result,
+  sample_source = "urine",         # biological matrix of your sample
+  api_key       = "sk-openai-xxx", # OpenAI API key
+  provider      = "openai"
+)
+
+# Using SiliconFlow / Qwen (recommended for users in China)
+fmsea_result <- analyze_matrix_relevance(
+  results       = fmsea_result,
+  sample_source = "plasma",
+  api_key       = "sk-siliconflow-xxx",
+  provider      = "siliconflow"
+)
+```
+
+The following columns are added to `fmsea_result@significant_modules`:
+
+| Column | Description |
+|--------|-------------|
+| `matrix_confidence_score` | Integer score: 0 / 25 / 50 / 75 / 100 |
+| `matrix_confidence_reason` | Brief explanation of the score |
+| `matrix_source` | The sample source provided |
+
+## Step 5b — Topic relevance assessment {#r-topic-relevance}
+
+Links significant pathways to a research topic using PubMed literature search and embedding-based re-ranking.
+
+```r
+fmsea_result <- analyze_topic_relevance(
+  results           = fmsea_result,
+  research_topic    = "type 2 diabetes",
+  api_key           = "sk-siliconflow-xxx",
+  provider          = "siliconflow",
+  pubmed_api_key    = NULL,   # optional; increases PubMed rate limit
+  similarity_cutoff = 0.6     # cosine similarity threshold for fuzzy matches
+)
+```
+
+The following columns are added to `fmsea_result@significant_modules`:
+
+| Column | Description |
+|--------|-------------|
+| `literature_pmids_exact` | PMIDs from exact PubMed search |
+| `literature_pmids_fuzzy` | PMIDs from fuzzy search filtered by embedding similarity |
+| `topic_confidence_score` | LLM score (0 / 25 / 50 / 75 / 100) when no literature is found |
+| `research_topic` | The research topic used |
+
+> **Caution:** LLM outputs are probabilistic. Always verify AI-generated interpretations against primary literature. Use this module to guide hypothesis generation, not to replace domain expertise.
